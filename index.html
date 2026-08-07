@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESPAWN — Turn your life into an RPG</title>
+  <meta name="description" content="Respawn is the fitness RPG that turns your real health data into a live character sheet. Level up STR, DEX, SPD, STM & INT, clear daily quests, read deep analytics, and train with an AI coach." />
+
+  <!-- App icon (Respawn chevron mark) -->
+  <link rel="icon" type="image/png" href="assets/respawn-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0e0f16" />
+
+  <!-- Social / OG -->
+  <meta property="og:title" content="RESPAWN — Turn your life into an RPG" />
+  <meta property="og:description" content="The fitness RPG that turns your real health data into a live character sheet. Level up, clear quests, earn your screen time." />
+  <meta property="og:image" content="assets/respawn-icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+
+  <!-- Pixel + retro terminal fonts, matching the app (Press Start 2P + VT323) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ambient background layers -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow glow-a" aria-hidden="true"></div>
+  <div class="bg-glow glow-b" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a class="brand" href="#top">
+      <img class="brand-icon" src="assets/respawn-icon.png" alt="Respawn" width="28" height="28" />
+      <span class="brand-name">RESPAWN</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#attributes">ATTRIBUTES</a>
+      <a href="#quests">QUESTS</a>
+      <a href="#focus">FOCUS</a>
+      <a href="#analytics">ANALYTICS</a>
+      <a href="#coach">COACH</a>
+    </nav>
+    <a href="#download" class="btn btn-sm btn-primary">DOWNLOAD</a>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-copy">
+      <div class="status-chip"><span class="dot"></span> SYSTEM ONLINE</div>
+      <h1 class="hero-title">RESPAWN</h1>
+      <p class="hero-tagline">Turn your life into an RPG.</p>
+      <p class="hero-sub">
+        Respawn reads your body's real health data and renders it as a live
+        character sheet. Train in the real world, earn XP, and level up your
+        <span class="c-str">STR</span>, <span class="c-dex">DEX</span>,
+        <span class="c-spd">SPD</span>, <span class="c-stm">STM</span> and
+        <span class="c-int">INT</span>.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#download" class="btn btn-primary">▶ DOWNLOAD</a>
+        <a href="#attributes" class="btn btn-ghost">VIEW SYSTEM</a>
+      </div>
+
+      <div class="hero-terminal" aria-hidden="true">
+        <span class="term-line" data-text="&gt; booting respawn.exe"></span>
+        <span class="term-line" data-text="&gt; syncing apple health ..."></span>
+        <span class="term-line" data-text="&gt; character loaded. welcome, player."></span>
+        <span class="term-cursor">█</span>
+      </div>
+    </div>
+
+    <div class="hero-device">
+      <div class="phone">
+        <div class="phone-notch" aria-hidden="true"></div>
+        <img src="assets/respawn-status.png" alt="Respawn app STATUS screen showing the STR, DEX, SPD, STM and INT attribute cards with HP / MP vitals." />
+      </div>
+      <div class="phone-glow" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ============ STATS BAR ============ -->
+  <section class="numbers" aria-label="At a glance">
+    <div class="num"><span class="num-v">5</span><span class="num-l">Core attributes</span></div>
+    <div class="num"><span class="num-v">7</span><span class="num-l">Quest categories</span></div>
+    <div class="num"><span class="num-v">100</span><span class="num-l">Levels per stat</span></div>
+    <div class="num"><span class="num-v">7</span><span class="num-l">Ranks to climb</span></div>
+    <div class="num"><span class="num-v">2</span><span class="num-l">Vitals: HP &amp; MP</span></div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>STRENGTH</span><span class="sep">◆</span><span>DEXTERITY</span><span class="sep">◆</span>
+      <span>SPEED</span><span class="sep">◆</span><span>STAMINA</span><span class="sep">◆</span>
+      <span>INTELLECT</span><span class="sep">◆</span><span>HP</span><span class="sep">◆</span>
+      <span>MP</span><span class="sep">◆</span><span>XP</span><span class="sep">◆</span>
+      <span>QUESTS</span><span class="sep">◆</span><span>LEVEL UP</span><span class="sep">◆</span>
+      <span>STRENGTH</span><span class="sep">◆</span><span>DEXTERITY</span><span class="sep">◆</span>
+      <span>SPEED</span><span class="sep">◆</span><span>STAMINA</span><span class="sep">◆</span>
+      <span>INTELLECT</span><span class="sep">◆</span><span>HP</span><span class="sep">◆</span>
+      <span>MP</span><span class="sep">◆</span><span>XP</span><span class="sep">◆</span>
+      <span>QUESTS</span><span class="sep">◆</span><span>LEVEL UP</span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <!-- ============ ATTRIBUTES ============ -->
+  <section class="section" id="attributes">
+    <div class="section-head">
+      <span class="section-kicker">// CHARACTER SHEET</span>
+      <h2 class="section-title">ATTRIBUTES</h2>
+      <p class="section-lede">
+        Five core stats, each mapped to a real dimension of your fitness.
+        Every workout, meal and rest session feeds XP into the system.
+      </p>
+    </div>
+
+    <div class="stat-grid">
+      <article class="stat-card" style="--c:#ef4444" data-reveal>
+        <div class="stat-top"><h3 class="stat-name">STR</h3>
+          <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h2V7H4V5H2v14h2v-2h2v-2H4V9zm16 0h-2V7h2V5h2v14h-2v-2h-2v-2h2V9zM8 11h8v2H8z"/></svg></div>
+        <div class="stat-value">1</div>
+        <div class="xp-track"><span class="xp-fill" data-w="39"></span></div>
+        <div class="stat-delta">+118 XP (39%)</div>
+        <p class="stat-desc">STRENGTH · Lifts &amp; resistance training</p>
+      </article>
+
+      <article class="stat-card" style="--c:#f97316" data-reveal>
+        <div class="stat-top"><h3 class="stat-name">DEX</h3>
+          <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h6l-2 8 10-12h-6z"/></svg></div>
+        <div class="stat-value">1</div>
+        <div class="xp-track"><span class="xp-fill" data-w="10"></span></div>
+        <div class="stat-delta">+30 XP (10%)</div>
+        <p class="stat-desc">DEXTERITY · Flexibility &amp; mobility</p>
+      </article>
+
+      <article class="stat-card" style="--c:#f59e0b" data-reveal>
+        <div class="stat-top"><h3 class="stat-name">SPD</h3>
+          <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3a2 2 0 110 4 2 2 0 010-4zM6 22l3-8 3 2v6h2v-8l-3-2 1-4 3 3 3-1v-2l-2 .5-3-3-3 1-4 4 1.5 1.5L9 8l-1 4-4 10z"/></svg></div>
+        <div class="stat-value">1</div>
+        <div class="xp-track"><span class="xp-fill" data-w="10"></span></div>
+        <div class="stat-delta">+30 XP (10%)</div>
+        <p class="stat-desc">SPEED · Sprints &amp; agility</p>
+      </article>
+
+      <article class="stat-card" style="--c:#ec4899" data-reveal>
+        <div class="stat-top"><h3 class="stat-name">STM</h3>
+          <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3 1.2 4 2.5 1-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></div>
+        <div class="stat-value">1</div>
+        <div class="xp-track"><span class="xp-fill" data-w="10"></span></div>
+        <div class="stat-delta">+30 XP (10%)</div>
+        <p class="stat-desc">STAMINA · Endurance &amp; cardio</p>
+      </article>
+
+      <article class="stat-card wide" style="--c:#818cf8" data-reveal>
+        <div class="stat-top"><h3 class="stat-name">INT</h3>
+          <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2a5 5 0 00-5 5c0 1.6.7 3 1.9 3.9A3 3 0 007 16v2a2 2 0 002 2h2V4a2 2 0 00-2-2zm11 5a5 5 0 00-5-5 2 2 0 00-2 2v16h2a2 2 0 002-2v-2a3 3 0 001.1-5.1A4.9 4.9 0 0020 7z"/></svg></div>
+        <div class="stat-value">1</div>
+        <div class="xp-track"><span class="xp-fill" data-w="25"></span></div>
+        <div class="stat-delta">+74 XP (25%)</div>
+        <p class="stat-desc">INTELLECT · Study, focus &amp; quizzes</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ VITALS ============ -->
+  <section class="section vitals-section" id="vitals">
+    <div class="vitals-wrap">
+      <div class="section-head left">
+        <span class="section-kicker">// LIFE FORCE</span>
+        <h2 class="section-title">VITALS</h2>
+        <p class="section-lede">
+          Two resource bars keep your run alive. Fuel <b class="c-hp">HP</b> with
+          food and nutrition; restore <b class="c-mp">MP</b> with sleep and
+          recovery. Run too low and debuffs like <b>Fatigued</b> and
+          <b>Dehydrated</b> start dragging your stats down.
+        </p>
+        <ul class="vital-facts">
+          <li><span class="c-hp">◆</span> HP tracks net calories vs. your daily target</li>
+          <li><span class="c-mp">◆</span> MP fills from sleep hours &amp; quality</li>
+          <li><span>◆</span> Hydration adds a buff; running dry adds a debuff</li>
+        </ul>
+      </div>
+
+      <div class="vitals-panel" data-reveal>
+        <div class="panel-title">VITALS</div>
+        <div class="vital-row">
+          <div class="vital-head"><span class="c-hp">HP</span><span class="vital-num">35 / 100</span></div>
+          <div class="vital-track"><span class="vital-fill hp" data-w="35"></span></div>
+          <div class="vital-note">Intake: 700 / 2005 kcal &nbsp;|&nbsp; Net: +527 kcal</div>
+        </div>
+        <div class="vital-row">
+          <div class="vital-head"><span class="c-mp">MP</span><span class="vital-num">770 / 1400</span></div>
+          <div class="vital-track"><span class="vital-fill mp" data-w="55"></span></div>
+          <div class="vital-note">Restored by sleep &amp; recovery · 7.5h last night</div>
+        </div>
+        <div class="vital-foot"><span>◈ FOOD → HP</span><span>◈ SLEEP → MP</span><span>◈ HYDRATION BUFF</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RANKS ============ -->
+  <section class="section" id="ranks">
+    <div class="section-head">
+      <span class="section-kicker">// PROGRESSION</span>
+      <h2 class="section-title">RANK UP</h2>
+      <p class="section-lede">
+        Every attribute levels from <b>1 to 100</b> on its own XP curve.
+        Cross each threshold and your title evolves — from a fresh Novice all
+        the way to Enlightened.
+      </p>
+    </div>
+
+    <div class="rank-ladder" data-reveal>
+      <div class="rank"><span class="rank-lv">LV 1</span><span class="rank-title">NOVICE</span></div>
+      <div class="rank"><span class="rank-lv">LV 10</span><span class="rank-title">APPRENTICE</span></div>
+      <div class="rank"><span class="rank-lv">LV 25</span><span class="rank-title">SCHOLAR</span></div>
+      <div class="rank"><span class="rank-lv">LV 50</span><span class="rank-title">SAGE</span></div>
+      <div class="rank"><span class="rank-lv">LV 75</span><span class="rank-title">MASTER</span></div>
+      <div class="rank"><span class="rank-lv">LV 90</span><span class="rank-title">GRANDMASTER</span></div>
+      <div class="rank is-max"><span class="rank-lv">LV 100</span><span class="rank-title">ENLIGHTENED</span></div>
+    </div>
+    <p class="rank-foot">XP curves steepen as you climb — 300 XP per early level, scaling to 2,000 XP near the cap.</p>
+  </section>
+
+  <!-- ============ QUESTS ============ -->
+  <section class="section split" id="quests">
+    <div class="split-copy">
+      <span class="section-kicker">// DAILY QUEST BOARD</span>
+      <h2 class="section-title left">QUESTS</h2>
+      <p class="section-lede left">
+        A fresh board of bite-sized challenges every day, generated around your
+        goals. Clear them for XP, chain streaks, and earn a daily letter grade.
+      </p>
+      <ul class="feature-list">
+        <li><b>Tiered difficulty.</b> Every quest is T1–T10 — harder tiers pay out more XP.</li>
+        <li><b>Complete, quiz, or skip.</b> Tap COMPLETE, TAKE QUIZ for mind quests, or SKIP with no penalty.</li>
+        <li><b>Daily rating.</b> Your day is scored S → F based on how much of the board you clear.</li>
+        <li><b>Unlock screen time.</b> In <a href="#focus" class="inline-link">Dedicated Mode</a>, each quest banks 30 min of access to your blocked apps.</li>
+      </ul>
+      <div class="rating-legend">
+        <span class="rt" style="--c:#facc15">S · PERFECT</span>
+        <span class="rt" style="--c:#22c55e">A · EXCELLENT</span>
+        <span class="rt" style="--c:#3b82f6">B · GOOD</span>
+        <span class="rt" style="--c:#f59e0b">C · AVERAGE</span>
+        <span class="rt" style="--c:#ef4444">D · POOR</span>
+        <span class="rt" style="--c:#64748b">F · FAILED</span>
+      </div>
+    </div>
+
+    <!-- Quest board mockup -->
+    <div class="app-panel quest-board" data-reveal>
+      <div class="qb-head">
+        <div>
+          <div class="qb-title">QUESTS</div>
+          <div class="qb-sub">Daily Quest Board</div>
+        </div>
+        <div class="qb-head-right">
+          <span class="qb-pill">45 min</span>
+          <span class="qb-rating" style="--c:#22c55e">A</span>
+        </div>
+      </div>
+
+      <div class="qb-progress">
+        <div class="qb-prog-row"><span>TODAY'S PROGRESS</span><span>3 / 5</span></div>
+        <div class="qb-prog-track"><span class="qb-prog-fill" data-w="60"></span></div>
+        <div class="qb-prog-xp">+240 XP earned today</div>
+      </div>
+
+      <div class="quest" style="--c:#ef4444">
+        <div class="q-top"><span class="q-cat">STR</span><span class="q-tier">T4</span><span class="q-xp">+90 XP</span></div>
+        <div class="q-title">Complete a full push workout</div>
+        <div class="q-actions"><span class="q-btn done">✓ COMPLETE</span><span class="q-btn skip">SKIP</span></div>
+      </div>
+
+      <div class="quest" style="--c:#818cf8">
+        <div class="q-top"><span class="q-cat">INT</span><span class="q-tier">T3</span><span class="q-xp">+65 XP</span></div>
+        <div class="q-title">Study: React hooks &amp; state</div>
+        <div class="q-actions"><span class="q-btn quiz">TAKE QUIZ</span><span class="q-btn skip">SKIP</span></div>
+      </div>
+
+      <div class="quest done-quest" style="--c:#ec4899">
+        <div class="q-top"><span class="q-cat">STM</span><span class="q-tier">T2</span><span class="q-xp">+45 XP</span></div>
+        <div class="q-title"><s>Run 2 miles at easy pace</s></div>
+        <div class="q-actions"><span class="q-btn complete-done">✓ DONE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOCUS MODE ============ -->
+  <section class="section focus-section" id="focus">
+    <div class="focus-halo" aria-hidden="true"></div>
+    <div class="section-head">
+      <span class="section-kicker">// DEDICATED MODE</span>
+      <h2 class="section-title">EARN YOUR SCREEN TIME</h2>
+      <p class="section-lede">
+        Flip on <b>Dedicated Mode</b> and Respawn shields your distracting apps
+        system-wide. Social media and games stay <b>locked</b> until you train —
+        every quest you clear banks <b class="c-timer">30 minutes</b> of access.
+        Skip the board, stay locked.
+      </p>
+    </div>
+
+    <div class="split reverse focus-split">
+      <div class="split-copy">
+        <ul class="feature-list">
+          <li><b>Blocks social &amp; games.</b> Your chosen apps are shielded via native iOS Screen Time — not just a soft nudge.</li>
+          <li><b>30 minutes per quest.</b> Each completed quest banks a 30-min unlock. Clear more, earn more.</li>
+          <li><b>Resets every day.</b> Earned time is scoped to today and never rolls over — a fresh board tomorrow.</li>
+          <li><b>You choose the apps.</b> Pick exactly what to block from the system picker; flip back to Normal anytime.</li>
+        </ul>
+      </div>
+
+      <!-- Focus Mode mockup -->
+      <div class="app-panel focus-card" data-reveal>
+        <div class="fc-head">
+          <span class="fc-title">FOCUS MODE</span>
+          <span class="fc-toggle"><span class="fc-opt">NORMAL</span><span class="fc-opt on">DEDICATED</span></span>
+        </div>
+        <p class="fc-desc">Dedicated Mode blocks distracting apps until you complete quests. Each quest unlocks <b>30 minutes</b>.</p>
+
+        <div class="fc-shield locked">
+          <span class="fc-lock">🔒</span>
+          <div>
+            <div class="fc-shield-title">APPS LOCKED</div>
+            <div class="fc-shield-sub">Complete a quest to unlock 30 min</div>
+          </div>
+        </div>
+
+        <div class="fc-apps">
+          <span class="fc-app">📸<i>🔒</i></span>
+          <span class="fc-app">🎵<i>🔒</i></span>
+          <span class="fc-app">▶️<i>🔒</i></span>
+          <span class="fc-app">🎮<i>🔒</i></span>
+          <span class="fc-app">👾<i>🔒</i></span>
+          <span class="fc-app add">＋</span>
+        </div>
+
+        <div class="fc-ledger">
+          <div class="fc-row"><span>Earned today</span><span class="fc-earned">90 min</span></div>
+          <div class="fc-row"><span>Minutes per quest</span><span>30</span></div>
+          <div class="fc-row"><span>Quests cleared</span><span>3 / 5</span></div>
+        </div>
+
+        <div class="fc-banked">✓ 3 quests cleared → <b>+90 min</b> banked today</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ANALYTICS ============ -->
+  <section class="section" id="analytics">
+    <div class="section-head">
+      <span class="section-kicker">// DATA PIPELINE ACTIVE</span>
+      <h2 class="section-title">ANALYTICS</h2>
+      <p class="section-lede">
+        A real data + ML pipeline turns your logs into trends, energy curves and
+        forecasts — so you can see where every stat is heading before you get there.
+      </p>
+    </div>
+
+    <div class="analytics-grid">
+      <!-- Energy ring -->
+      <div class="app-panel a-energy" data-reveal>
+        <div class="a-sect">ENERGY TODAY</div>
+        <div class="energy-row">
+          <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="ring-fg" cx="60" cy="60" r="52" data-pct="82"></circle>
+            <text x="60" y="70" class="ring-num">82</text>
+          </svg>
+          <div class="energy-meta">
+            <div class="a-label" style="color:#22c55e">EXCELLENT</div>
+            <div class="a-desc">Confidence: HIGH</div>
+            <div class="a-desc">Last night: 7.5h sleep</div>
+          </div>
+        </div>
+        <div class="energy-legend">
+          <span><i style="background:#3B82F6"></i>Composite</span>
+          <span><i style="background:#06b6d4"></i>Sleep</span>
+          <span><i style="background:#22c55e"></i>Food</span>
+          <span><i style="background:#a855f7"></i>Performance</span>
+        </div>
+      </div>
+
+      <!-- STR trend + chart -->
+      <div class="app-panel a-trend" data-reveal>
+        <div class="a-sect">STR TODAY</div>
+        <div class="trend-row">
+          <div class="trend-circle" style="--c:#ef4444">LV12</div>
+          <div>
+            <div class="a-label" style="color:#ef4444">APPRENTICE</div>
+            <div class="a-desc">5 sessions · 42 sets (7d)</div>
+            <div class="a-desc">38 total workouts · 6 day streak</div>
+          </div>
+        </div>
+        <div class="chart-label">STR SCORE (7 DAYS)</div>
+        <svg class="mini-chart" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
+          <polyline class="chart-area" points="0,70 50,58 100,62 150,40 200,44 250,26 300,20 300,90 0,90"></polyline>
+          <polyline class="chart-line" points="0,70 50,58 100,62 150,40 200,44 250,26 300,20"></polyline>
+        </svg>
+      </div>
+
+      <!-- ML prediction -->
+      <div class="app-panel a-pred" data-reveal>
+        <div class="a-row"><div class="a-sect">PREDICTION</div><span class="a-badge">◈ STR</span></div>
+        <div class="pred-stats">
+          <div class="pred-item"><span class="pred-v" style="color:#ef4444">LV 15</span><span class="pred-l">PROJECTED</span></div>
+          <div class="pred-div"></div>
+          <div class="pred-item"><span class="pred-v" style="color:#22c55e">HIGH</span><span class="pred-l">CONFIDENCE</span></div>
+        </div>
+        <p class="pred-note">◈ On track for STR Level 15 (APPRENTICE) by Aug 20.</p>
+      </div>
+
+      <!-- Muscle volume -->
+      <div class="app-panel a-vol" data-reveal>
+        <div class="a-sect">MUSCLE VOLUME (14D)</div>
+        <div class="vol-chips">
+          <span class="vol" style="--c:#ef4444"><i></i>Chest <b>18s</b></span>
+          <span class="vol" style="--c:#f59e0b"><i></i>Back <b>14s</b></span>
+          <span class="vol" style="--c:#3b82f6"><i></i>Legs <b>16s</b></span>
+          <span class="vol" style="--c:#818cf8"><i></i>Shoulders <b>9s</b></span>
+          <span class="vol" style="--c:#22c55e"><i></i>Arms <b>11s</b></span>
+          <span class="vol" style="--c:#ec4899"><i></i>Core <b>7s</b></span>
+        </div>
+        <div class="a-sect" style="margin-top:18px">OVERVIEW</div>
+        <ul class="overview">
+          <li>◦ Energy: 82 / 100</li>
+          <li>◦ STR: Level 12 (Apprentice) · 610 XP this week</li>
+          <li>◦ All stats tracked — complete athlete!</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI COACH ============ -->
+  <section class="section split reverse" id="coach">
+    <div class="split-copy">
+      <span class="section-kicker">// TRAINING AI</span>
+      <h2 class="section-title left">AI COACH</h2>
+      <p class="section-lede left">
+        A conversational coach that already knows your stats. Ask what to eat,
+        how to train, or what to study — and get back a plan you can save and run.
+      </p>
+      <ul class="feature-list">
+        <li><b>Context-aware.</b> It reads your attributes, vitals and recent logs before answering.</li>
+        <li><b>Saveable plans.</b> Generated <span class="c-hp">workouts</span>, <span class="c-dex">stretches</span> and <span class="c-hp2">meals</span> drop straight into your saved plans.</li>
+        <li><b>Always on.</b> Nutrition, sleep, training and INT study plans, 24/7.</li>
+      </ul>
+      <div class="chip-row">
+        <span class="try-chip">"generate a push day workout"</span>
+        <span class="try-chip">"what should I eat post-run?"</span>
+      </div>
+    </div>
+
+    <!-- Coach chat mockup -->
+    <div class="app-panel coach-chat" data-reveal>
+      <div class="chat-head">
+        <span class="chat-ic">🤖</span>
+        <span class="chat-title">AI COACH</span>
+        <span class="chat-book">🔖</span>
+      </div>
+      <div class="chat-body">
+        <div class="bubble coach">
+          <span class="avatar">🤖</span>
+          <p>SYSTEM ONLINE: Coach initialized. Ask about nutrition, sleep, training, or INT study plans.</p>
+        </div>
+        <div class="bubble user"><p>generate a push day workout</p></div>
+        <div class="bubble coach">
+          <span class="avatar">🤖</span>
+          <p>Here's a push day built for your current STR level. Progressive overload — save it and log as you go.</p>
+        </div>
+        <div class="plan-card" style="--c:#257bf4">
+          <div class="plan-head"><span class="plan-ic">🏋</span><span class="plan-title">PUSH DAY</span></div>
+          <div class="plan-meta">5 items · WORKOUT</div>
+          <div class="plan-item">• Bench Press <b>4×8</b></div>
+          <div class="plan-item">• Overhead Press <b>3×10</b></div>
+          <div class="plan-item">• Incline Dumbbell <b>3×12</b></div>
+          <div class="plan-item">• Tricep Dips <b>3×12</b></div>
+          <div class="plan-more">+1 more...</div>
+          <div class="plan-save">🔖 SAVE PLAN</div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <span class="ci-field">Ask about food, stats, or what to study...</span>
+        <span class="ci-send">➤</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HEALTH SYNC ============ -->
+  <section class="section" id="sync">
+    <div class="section-head">
+      <span class="section-kicker">// PASSIVE TRACKING</span>
+      <h2 class="section-title">IT PLAYS ITSELF</h2>
+      <p class="section-lede">
+        Connect <b>Apple Health</b> or <b>Health Connect</b> and Respawn pulls your
+        day in automatically — no manual logging required for most of your XP.
+      </p>
+    </div>
+    <div class="sync-grid">
+      <span class="sync-chip">🏃 Workouts</span>
+      <span class="sync-chip">👟 Steps</span>
+      <span class="sync-chip">🔥 Active energy</span>
+      <span class="sync-chip">❤ HRV</span>
+      <span class="sync-chip">💓 Resting HR</span>
+      <span class="sync-chip">🛌 Sleep</span>
+      <span class="sync-chip">⚖ Body weight</span>
+      <span class="sync-chip">💧 Hydration</span>
+      <span class="sync-chip">🍎 Nutrition</span>
+      <span class="sync-chip">📷 Food scan</span>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM / TABS ============ -->
+  <section class="section" id="system">
+    <div class="section-head">
+      <span class="section-kicker">// INTERFACE</span>
+      <h2 class="section-title">FIVE SCREENS, ONE LOOP</h2>
+    </div>
+    <div class="feature-grid">
+      <article class="feat" style="--c:#3B82F6" data-reveal><div class="feat-ic">◉</div><h3>STATUS</h3><p>Your live character sheet — attributes, vitals and rank, updated in real time.</p></article>
+      <article class="feat" style="--c:#ef4444" data-reveal><div class="feat-ic">⚔</div><h3>QUESTS</h3><p>A daily board of tiered missions that turn your goals into XP.</p></article>
+      <article class="feat" style="--c:#f59e0b" data-reveal><div class="feat-ic">✎</div><h3>LOG</h3><p>One tap to log training, food, water and sleep. Scan a meal to auto-track nutrition.</p></article>
+      <article class="feat" style="--c:#818cf8" data-reveal><div class="feat-ic">📈</div><h3>ANALYTICS</h3><p>Trends, energy curves and rank forecasts from a real ML pipeline.</p></article>
+      <article class="feat" style="--c:#22c55e" data-reveal><div class="feat-ic">🤖</div><h3>COACH</h3><p>An AI coach that reads your stats and hands you saveable plans.</p></article>
+      <article class="feat" style="--c:#38bdf8" data-reveal><div class="feat-ic">❤</div><h3>HEALTH SYNC</h3><p>Apple Health &amp; Health Connect flow in steps, workouts, HRV, sleep and more.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ GAME LOOP ============ -->
+  <section class="section" id="loop">
+    <div class="section-head">
+      <span class="section-kicker">// CORE LOOP</span>
+      <h2 class="section-title">HOW YOU RESPAWN</h2>
+    </div>
+    <ol class="loop">
+      <li data-reveal><span class="loop-no">01</span><h3>SYNC</h3><p>Connect Apple Health or Health Connect. Steps, workouts, sleep, HRV and nutrition stream in automatically.</p></li>
+      <li data-reveal><span class="loop-no">02</span><h3>TRAIN</h3><p>Log real workouts, meals, water and rest. Every action grants XP to the matching attribute.</p></li>
+      <li data-reveal><span class="loop-no">03</span><h3>LEVEL UP</h3><p>XP raises your five stats and vitals. Climb the ranks from Novice toward Enlightened.</p></li>
+      <li data-reveal><span class="loop-no">04</span><h3>RESPAWN</h3><p>Recover, restore MP overnight, and load back in tomorrow stronger than your last run.</p></li>
+    </ol>
+  </section>
+
+  <!-- ============ DOWNLOAD / CTA ============ -->
+  <section class="cta" id="download">
+    <div class="cta-inner" data-reveal>
+      <img class="app-tile" src="assets/respawn-icon.png" alt="Respawn app icon" width="88" height="88" />
+      <div class="status-chip"><span class="dot"></span> READY PLAYER ONE</div>
+      <h2 class="cta-title">INSERT COIN</h2>
+      <p class="cta-sub">Respawn is built for iOS &amp; Android, powered entirely by your real health data. Start your run.</p>
+      <div class="hero-actions center">
+        <a href="#" class="btn btn-primary btn-lg"> App Store</a>
+        <a href="#" class="btn btn-ghost btn-lg">▶ Google Play</a>
+      </div>
+      <p class="cta-fine">No pay-to-win. Your body is the only stat that matters.</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-brand"><img class="brand-icon small" src="assets/respawn-icon.png" alt="" width="22" height="22" /> RESPAWN</div>
+    <p class="footer-line">© 2026 Respawn · A fitness RPG · Built with real health data.</p>
+    <div class="footer-tags"><span>STR</span><span>DEX</span><span>SPD</span><span>STM</span><span>INT</span></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

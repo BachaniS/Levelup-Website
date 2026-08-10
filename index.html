@@ -24,21 +24,98 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 <body>
+  <!-- ============ BOOT / PRESS START ============ -->
+  <div class="boot" id="boot" role="dialog" aria-label="Respawn boot sequence">
+    <div class="boot-inner">
+      <div class="boot-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32">
+          <path d="M7 26L25 6"/><path d="M25 26L7 6"/>
+          <path d="M7.4 21.2l5.2 4.6"/><path d="M24.6 21.2l-5.2 4.6"/>
+        </svg>
+      </div>
+      <h1 class="boot-title"><span class="b1">RES</span>PAWN</h1>
+      <p class="boot-status" id="bootStatus">SYSTEM INITIALIZING...</p>
+
+      <div class="boot-bar"><span class="boot-fill" id="bootFill"></span></div>
+      <div class="boot-pct" id="bootPct">0%</div>
+
+      <div class="boot-log" id="bootLog" aria-hidden="true"></div>
+
+      <button class="boot-start" id="bootStart" type="button">▶ PRESS START</button>
+      <button class="boot-skip" id="bootSkip" type="button">SKIP INTRO →</button>
+    </div>
+  </div>
+
+  <!-- ============ WORLD (3D) ============ -->
+  <canvas id="world" aria-hidden="true"></canvas>
+
   <!-- ambient background layers -->
   <div class="bg-grid" aria-hidden="true"></div>
   <div class="bg-glow glow-a" aria-hidden="true"></div>
   <div class="bg-glow glow-b" aria-hidden="true"></div>
   <div class="scanlines" aria-hidden="true"></div>
 
+  <!-- ============ HUD ============ -->
+  <div class="hud" id="hud" aria-hidden="true">
+    <!-- always-visible XP strip: works at every width, costs no layout room -->
+    <div class="hud-strip">
+      <span class="hud-strip-fill" id="hudStrip"></span>
+      <span class="hud-strip-tag"><b id="hudStripLv">LV 1</b> · <span id="hudStripXp">0%</span></span>
+    </div>
+
+    <div class="hud-player" id="hudPlayer">
+      <div class="hp-row">
+        <div class="hp-avatar" id="hudLevel">1</div>
+        <div>
+          <div class="hp-name">PLAYER_01</div>
+          <div class="hp-class" id="hudClass">E-RANK PALADIN</div>
+        </div>
+      </div>
+      <div class="hud-bar">
+        <div class="hud-bar-label"><span class="l-xp">XP</span><span id="hudXpVal">0%</span></div>
+        <div class="hud-track"><span class="hud-fill xp" id="hudXp"></span></div>
+      </div>
+      <div class="hud-bar">
+        <div class="hud-bar-label"><span class="l-hp">HP</span><span id="hudHpVal">35/100</span></div>
+        <div class="hud-track"><span class="hud-fill hp" id="hudHp" style="width:35%"></span></div>
+      </div>
+      <div class="hud-bar">
+        <div class="hud-bar-label"><span class="l-mp">MP</span><span id="hudMpVal">770/1400</span></div>
+        <div class="hud-track"><span class="hud-fill mp" id="hudMp" style="width:55%"></span></div>
+      </div>
+    </div>
+
+    <nav class="hud-map" id="hudMap" aria-label="Section waypoints"></nav>
+
+    <div class="hud-ctl">
+      <button class="ctl-btn" id="sfxBtn" type="button" aria-pressed="false">♪ SFX OFF</button>
+      <button class="ctl-btn" id="fxBtn" type="button" aria-pressed="true">◈ FX ON</button>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div class="levelup-banner" id="lvlBanner" aria-hidden="true"><div><b>LEVEL UP</b><small id="lvlText">STR → LV 2</small></div></div>
+  <div class="reticle" id="reticle" aria-hidden="true"></div>
+
   <!-- ============ NAV ============ -->
-  <header class="nav">
+  <header class="nav" id="nav">
     <a class="brand" href="#top">
       <img class="brand-icon" src="assets/respawn-icon.png" alt="Respawn" width="28" height="28" />
       <span class="brand-name">RESPAWN</span>
     </a>
     <nav class="nav-links">
+      <a href="#class">CLASS</a>
       <a href="#attributes">ATTRIBUTES</a>
       <a href="#quests">QUESTS</a>
       <a href="#focus">FOCUS</a>
@@ -64,7 +141,7 @@
 
       <div class="hero-actions">
         <a href="#download" class="btn btn-primary">▶ DOWNLOAD</a>
-        <a href="#attributes" class="btn btn-ghost">VIEW SYSTEM</a>
+        <a href="#class" class="btn btn-ghost">VIEW SYSTEM</a>
       </div>
 
       <div class="hero-terminal" aria-hidden="true">
@@ -73,15 +150,23 @@
         <span class="term-line" data-text="&gt; character loaded. welcome, player."></span>
         <span class="term-cursor">█</span>
       </div>
+
+      <div class="hero-hint" aria-hidden="true">
+        <kbd>SCROLL</kbd> TO GAIN XP · <kbd>MOVE</kbd> TO ROTATE RIG
+      </div>
     </div>
 
     <div class="hero-device">
+      <!-- the 3D stat rig docks here, behind the phone -->
+      <div class="hero-stage anchor3d" data-anchor3d="hero" aria-hidden="true"></div>
       <div class="phone">
         <div class="phone-notch" aria-hidden="true"></div>
-        <img src="assets/respawn-status.png" alt="Respawn app STATUS screen showing the STR, DEX, SPD, STM and INT attribute cards with HP / MP vitals." />
+        <img src="assets/respawn-status-class.jpg" alt="Respawn app STATUS screen showing the E-Rank Paladin class card, the STR, DEX, SPD, STM and INT attribute cards, and HP / MP vitals." />
       </div>
       <div class="phone-glow" aria-hidden="true"></div>
     </div>
+
+    <div class="scroll-cue" aria-hidden="true"><i></i>SCROLL</div>
   </section>
 
   <!-- ============ STATS BAR ============ -->
@@ -109,8 +194,45 @@
     </div>
   </div>
 
+  <!-- ============ CLASS ============ -->
+  <section class="section" id="class" data-wp="CLASS">
+    <div class="section-head">
+      <span class="section-kicker">// CHARACTER CLASS</span>
+      <h2 class="section-title">PICK YOUR PATH</h2>
+      <p class="section-lede">
+        Respawn reads the shape of your training and assigns you a class.
+        Train evenly and you're a Paladin; go all-in on lifts and you're a
+        Berserker. Your rank climbs from <b>E</b> to <b>S</b> as your class power grows.
+      </p>
+    </div>
+
+    <div class="class-wrap">
+      <div class="class-card holo" data-reveal>
+        <div class="cc-top">
+          <div class="cc-sigil" aria-hidden="true">🛡</div>
+          <div>
+            <div class="cc-kicker">Class</div>
+            <h3 class="cc-name">E-Rank Paladin</h3>
+          </div>
+          <span class="cc-badge">E-CLASS</span>
+        </div>
+        <p class="cc-desc">Strength, endurance, and wisdom in harmony.</p>
+        <div class="cc-power"><span>Class power</span><b>17</b></div>
+      </div>
+
+      <div class="erank">
+        <div class="er is-you" style="--c:#94a3b8" data-reveal><span class="er-l">E</span><span class="er-n">Awakened</span><span class="er-r">YOU ARE HERE</span></div>
+        <div class="er" style="--c:#22c55e" data-reveal><span class="er-l">D</span><span class="er-n">Trained</span><span class="er-r">POWER 40</span></div>
+        <div class="er" style="--c:#38bdf8" data-reveal><span class="er-l">C</span><span class="er-n">Seasoned</span><span class="er-r">POWER 90</span></div>
+        <div class="er" style="--c:#818cf8" data-reveal><span class="er-l">B</span><span class="er-n">Elite</span><span class="er-r">POWER 160</span></div>
+        <div class="er" style="--c:#c084fc" data-reveal><span class="er-l">A</span><span class="er-n">Ascendant</span><span class="er-r">POWER 250</span></div>
+        <div class="er" style="--c:#facc15" data-reveal><span class="er-l">S</span><span class="er-n">Sovereign</span><span class="er-r">POWER 400</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ ATTRIBUTES ============ -->
-  <section class="section" id="attributes">
+  <section class="section" id="attributes" data-wp="STATS">
     <div class="section-head">
       <span class="section-kicker">// CHARACTER SHEET</span>
       <h2 class="section-title">ATTRIBUTES</h2>
@@ -121,50 +243,87 @@
     </div>
 
     <div class="stat-grid">
-      <article class="stat-card" style="--c:#ef4444" data-reveal>
+      <article class="stat-card holo" style="--c:#ef4444" data-reveal>
         <div class="stat-top"><h3 class="stat-name">STR</h3>
           <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h2V7H4V5H2v14h2v-2h2v-2H4V9zm16 0h-2V7h2V5h2v14h-2v-2h-2v-2h2V9zM8 11h8v2H8z"/></svg></div>
-        <div class="stat-value">1</div>
-        <div class="xp-track"><span class="xp-fill" data-w="39"></span></div>
-        <div class="stat-delta">+118 XP (39%)</div>
+        <div class="stat-value">6</div>
+        <div class="xp-track"><span class="xp-fill" data-w="49"></span></div>
+        <div class="stat-delta">+1697 XP (49%)</div>
         <p class="stat-desc">STRENGTH · Lifts &amp; resistance training</p>
       </article>
 
-      <article class="stat-card" style="--c:#f97316" data-reveal>
+      <article class="stat-card holo" style="--c:#f97316" data-reveal>
         <div class="stat-top"><h3 class="stat-name">DEX</h3>
           <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h6l-2 8 10-12h-6z"/></svg></div>
-        <div class="stat-value">1</div>
-        <div class="xp-track"><span class="xp-fill" data-w="10"></span></div>
-        <div class="stat-delta">+30 XP (10%)</div>
+        <div class="stat-value">2</div>
+        <div class="xp-track"><span class="xp-fill" data-w="39"></span></div>
+        <div class="stat-delta">+416 XP (39%)</div>
         <p class="stat-desc">DEXTERITY · Flexibility &amp; mobility</p>
       </article>
 
-      <article class="stat-card" style="--c:#f59e0b" data-reveal>
+      <article class="stat-card holo" style="--c:#f59e0b" data-reveal>
         <div class="stat-top"><h3 class="stat-name">SPD</h3>
           <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3a2 2 0 110 4 2 2 0 010-4zM6 22l3-8 3 2v6h2v-8l-3-2 1-4 3 3 3-1v-2l-2 .5-3-3-3 1-4 4 1.5 1.5L9 8l-1 4-4 10z"/></svg></div>
-        <div class="stat-value">1</div>
-        <div class="xp-track"><span class="xp-fill" data-w="10"></span></div>
-        <div class="stat-delta">+30 XP (10%)</div>
+        <div class="stat-value">2</div>
+        <div class="xp-track"><span class="xp-fill" data-w="38"></span></div>
+        <div class="stat-delta">+414 XP (38%)</div>
         <p class="stat-desc">SPEED · Sprints &amp; agility</p>
       </article>
 
-      <article class="stat-card" style="--c:#ec4899" data-reveal>
+      <article class="stat-card holo" style="--c:#ec4899" data-reveal>
         <div class="stat-top"><h3 class="stat-name">STM</h3>
           <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3 1.2 4 2.5 1-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></div>
-        <div class="stat-value">1</div>
-        <div class="xp-track"><span class="xp-fill" data-w="10"></span></div>
-        <div class="stat-delta">+30 XP (10%)</div>
+        <div class="stat-value">2</div>
+        <div class="xp-track"><span class="xp-fill" data-w="31"></span></div>
+        <div class="stat-delta">+394 XP (31%)</div>
         <p class="stat-desc">STAMINA · Endurance &amp; cardio</p>
       </article>
 
-      <article class="stat-card wide" style="--c:#818cf8" data-reveal>
+      <article class="stat-card wide holo" style="--c:#818cf8" data-reveal>
         <div class="stat-top"><h3 class="stat-name">INT</h3>
           <svg class="stat-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 2a5 5 0 00-5 5c0 1.6.7 3 1.9 3.9A3 3 0 007 16v2a2 2 0 002 2h2V4a2 2 0 00-2-2zm11 5a5 5 0 00-5-5 2 2 0 00-2 2v16h2a2 2 0 002-2v-2a3 3 0 001.1-5.1A4.9 4.9 0 0020 7z"/></svg></div>
-        <div class="stat-value">1</div>
-        <div class="xp-track"><span class="xp-fill" data-w="25"></span></div>
-        <div class="stat-delta">+74 XP (25%)</div>
+        <div class="stat-value">5</div>
+        <div class="xp-track"><span class="xp-fill" data-w="32"></span></div>
+        <div class="stat-delta">+1295 XP (32%)</div>
         <p class="stat-desc">INTELLECT · Study, focus &amp; quizzes</p>
       </article>
+    </div>
+  </section>
+
+  <!-- ============ PROFILE / 3D RADAR ============ -->
+  <section class="section" id="profile" data-wp="PROFILE">
+    <div class="section-head">
+      <span class="section-kicker">// LIVE PROFILE</span>
+      <h2 class="section-title">YOUR SHAPE</h2>
+      <p class="section-lede">
+        Every stat plotted on one pentagon. The silhouette is your training
+        fingerprint — spikes show where you're strong, dents show what the game
+        wants you to work on next.
+      </p>
+    </div>
+
+    <div class="profile-wrap">
+      <!-- the 3D rig flies here from the hero -->
+      <div class="radar-stage anchor3d" data-anchor3d="profile" data-reveal>
+        <!-- 2D radar: the guaranteed rendering path. Stays hidden while the
+             WebGL rig is live, and takes over if 3D never comes up. -->
+        <svg class="radar-2d" id="radar2d" viewBox="0 0 320 320"
+             role="img" aria-label="Radar chart plotting STR, DEX, SPD, STM and INT levels"></svg>
+        <div class="radar-hint" id="radarHint">DRAG-FREE · MOVE YOUR POINTER TO ORBIT</div>
+      </div>
+
+      <div data-reveal>
+        <p class="section-lede left" style="margin-bottom:24px">
+          Tap any stat to feed it XP and watch the shape redraw in real time.
+        </p>
+        <div class="stat-readout" id="statReadout">
+          <div class="sr" style="--c:#ef4444" data-stat="STR" data-v="92"><span class="sr-k">STR</span><span class="sr-track"><i class="sr-fill"></i></span><span class="sr-v">LV 6 · 49%</span></div>
+          <div class="sr" style="--c:#f97316" data-stat="DEX" data-v="46"><span class="sr-k">DEX</span><span class="sr-track"><i class="sr-fill"></i></span><span class="sr-v">LV 2 · 39%</span></div>
+          <div class="sr" style="--c:#f59e0b" data-stat="SPD" data-v="58"><span class="sr-k">SPD</span><span class="sr-track"><i class="sr-fill"></i></span><span class="sr-v">LV 2 · 38%</span></div>
+          <div class="sr" style="--c:#ec4899" data-stat="STM" data-v="40"><span class="sr-k">STM</span><span class="sr-track"><i class="sr-fill"></i></span><span class="sr-v">LV 2 · 31%</span></div>
+          <div class="sr" style="--c:#818cf8" data-stat="INT" data-v="74"><span class="sr-k">INT</span><span class="sr-track"><i class="sr-fill"></i></span><span class="sr-v">LV 5 · 32%</span></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -187,7 +346,7 @@
         </ul>
       </div>
 
-      <div class="vitals-panel" data-reveal>
+      <div class="vitals-panel holo" data-reveal>
         <div class="panel-title">VITALS</div>
         <div class="vital-row">
           <div class="vital-head"><span class="c-hp">HP</span><span class="vital-num">35 / 100</span></div>
@@ -229,7 +388,7 @@
   </section>
 
   <!-- ============ QUESTS ============ -->
-  <section class="section split" id="quests">
+  <section class="section split" id="quests" data-wp="QUESTS">
     <div class="split-copy">
       <span class="section-kicker">// DAILY QUEST BOARD</span>
       <h2 class="section-title left">QUESTS</h2>
@@ -253,47 +412,61 @@
       </div>
     </div>
 
-    <!-- Quest board mockup -->
-    <div class="app-panel quest-board" data-reveal>
+    <!-- Playable quest board -->
+    <div class="app-panel quest-board holo" id="questBoard" data-reveal>
       <div class="qb-head">
         <div>
           <div class="qb-title">QUESTS</div>
-          <div class="qb-sub">Daily Quest Board</div>
+          <div class="qb-sub">Daily Quest Board · <b id="qbLive">tap to play</b></div>
         </div>
         <div class="qb-head-right">
-          <span class="qb-pill">45 min</span>
-          <span class="qb-rating" style="--c:#22c55e">A</span>
+          <span class="qb-pill" id="qbMinutes">0 min</span>
+          <span class="qb-rating" id="qbRating" style="--c:#64748b">F</span>
         </div>
       </div>
 
       <div class="qb-progress">
-        <div class="qb-prog-row"><span>TODAY'S PROGRESS</span><span>3 / 5</span></div>
-        <div class="qb-prog-track"><span class="qb-prog-fill" data-w="60"></span></div>
-        <div class="qb-prog-xp">+240 XP earned today</div>
+        <div class="qb-prog-row"><span>TODAY'S PROGRESS</span><span id="qbCount">0 / 5</span></div>
+        <div class="qb-prog-track"><span class="qb-prog-fill" id="qbFill" data-w="0"></span></div>
+        <div class="qb-prog-xp" id="qbXp">+0 XP earned today</div>
       </div>
 
-      <div class="quest" style="--c:#ef4444">
+      <div class="quest quest-i" style="--c:#ef4444" data-xp="90" data-stat="STR" role="button" tabindex="0">
         <div class="q-top"><span class="q-cat">STR</span><span class="q-tier">T4</span><span class="q-xp">+90 XP</span></div>
         <div class="q-title">Complete a full push workout</div>
         <div class="q-actions"><span class="q-btn done">✓ COMPLETE</span><span class="q-btn skip">SKIP</span></div>
       </div>
 
-      <div class="quest" style="--c:#818cf8">
+      <div class="quest quest-i" style="--c:#818cf8" data-xp="65" data-stat="INT" role="button" tabindex="0">
         <div class="q-top"><span class="q-cat">INT</span><span class="q-tier">T3</span><span class="q-xp">+65 XP</span></div>
         <div class="q-title">Study: React hooks &amp; state</div>
         <div class="q-actions"><span class="q-btn quiz">TAKE QUIZ</span><span class="q-btn skip">SKIP</span></div>
       </div>
 
-      <div class="quest done-quest" style="--c:#ec4899">
+      <div class="quest quest-i" style="--c:#ec4899" data-xp="45" data-stat="STM" role="button" tabindex="0">
         <div class="q-top"><span class="q-cat">STM</span><span class="q-tier">T2</span><span class="q-xp">+45 XP</span></div>
-        <div class="q-title"><s>Run 2 miles at easy pace</s></div>
-        <div class="q-actions"><span class="q-btn complete-done">✓ DONE</span></div>
+        <div class="q-title">Run 2 miles at easy pace</div>
+        <div class="q-actions"><span class="q-btn done">✓ COMPLETE</span><span class="q-btn skip">SKIP</span></div>
       </div>
+
+      <div class="quest quest-i" style="--c:#f59e0b" data-xp="55" data-stat="SPD" role="button" tabindex="0">
+        <div class="q-top"><span class="q-cat">SPD</span><span class="q-tier">T3</span><span class="q-xp">+55 XP</span></div>
+        <div class="q-title">8 × 100m sprint intervals</div>
+        <div class="q-actions"><span class="q-btn done">✓ COMPLETE</span><span class="q-btn skip">SKIP</span></div>
+      </div>
+
+      <div class="quest quest-i" style="--c:#f97316" data-xp="40" data-stat="DEX" role="button" tabindex="0">
+        <div class="q-top"><span class="q-cat">DEX</span><span class="q-tier">T2</span><span class="q-xp">+40 XP</span></div>
+        <div class="q-title">10 min hip mobility flow</div>
+        <div class="q-actions"><span class="q-btn done">✓ COMPLETE</span><span class="q-btn skip">SKIP</span></div>
+      </div>
+
+      <button class="qb-replay" id="qbReplay" type="button">↺ RESET BOARD</button>
     </div>
   </section>
 
   <!-- ============ FOCUS MODE ============ -->
-  <section class="section focus-section" id="focus">
+  <section class="section focus-section" id="focus" data-wp="FOCUS">
     <div class="focus-halo" aria-hidden="true"></div>
     <div class="section-head">
       <span class="section-kicker">// DEDICATED MODE</span>
@@ -317,7 +490,7 @@
       </div>
 
       <!-- Focus Mode mockup -->
-      <div class="app-panel focus-card" data-reveal>
+      <div class="app-panel focus-card holo" data-reveal>
         <div class="fc-head">
           <span class="fc-title">FOCUS MODE</span>
           <span class="fc-toggle"><span class="fc-opt">NORMAL</span><span class="fc-opt on">DEDICATED</span></span>
@@ -342,41 +515,92 @@
         </div>
 
         <div class="fc-ledger">
-          <div class="fc-row"><span>Earned today</span><span class="fc-earned">90 min</span></div>
+          <div class="fc-row"><span>Earned today</span><span class="fc-earned" id="fcEarned">0 min</span></div>
           <div class="fc-row"><span>Minutes per quest</span><span>30</span></div>
-          <div class="fc-row"><span>Quests cleared</span><span>3 / 5</span></div>
+          <div class="fc-row"><span>Quests cleared</span><span id="fcCleared">0 / 5</span></div>
         </div>
 
-        <div class="fc-banked">✓ 3 quests cleared → <b>+90 min</b> banked today</div>
+        <div class="fc-banked" id="fcBanked">Clear quests on the board above to bank time →</div>
+      </div>
+    </div>
+
+    <!-- Real iOS shield screen -->
+    <div class="lock-demo" style="margin-top:64px">
+      <div>
+        <div class="ios-shield" data-reveal>
+          <div class="shield-glass" aria-hidden="true">⌛</div>
+          <div class="shield-h">Time is up</div>
+          <p class="shield-p">Complete a quest in Respawn to unlock more time.</p>
+          <div class="shield-ok">OK</div>
+        </div>
+        <p class="lock-note">ACTUAL iOS SHIELD SCREEN</p>
+      </div>
+      <div class="split-copy">
+        <span class="section-kicker">// WHEN THE CLOCK RUNS OUT</span>
+        <h3 class="section-title left" style="font-size:clamp(20px,3vw,30px)">THE WALL GOES UP</h3>
+        <p class="section-lede left">
+          When your banked minutes run out, iOS itself takes over. The app you
+          reached for simply stops — replaced by a shield that points you back
+          at the quest board. There's no dismiss button that cheats it, and no
+          timer you can argue with. Train, or stay locked.
+        </p>
+        <div class="chip-row">
+          <span class="try-chip">Enforced by Apple Screen Time</span>
+          <span class="try-chip">Resets at midnight</span>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ LOG ============ -->
+  <section class="section" id="log">
+    <div class="section-head">
+      <span class="section-kicker">// ACTION MENU</span>
+      <h2 class="section-title">CHOOSE WHAT TO TRAIN</h2>
+      <p class="section-lede">
+        The LOG tab is your move list. Eight actions, each wired to a stat or a
+        vital — pick one, log it, watch the bar move.
+      </p>
+    </div>
+    <div class="log-list">
+      <div class="log-row" style="--c:#818cf8" data-reveal><span class="log-ic">🧠</span><span class="log-n"><b>INT</b> (Mind)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#ef4444" data-reveal><span class="log-ic">🏋</span><span class="log-n"><b>STR</b> (Strength)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#ec4899" data-reveal><span class="log-ic">❤</span><span class="log-n"><b>STM</b> (Stamina)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#f59e0b" data-reveal><span class="log-ic">🏃</span><span class="log-n"><b>SPD</b> (Speed)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#f97316" data-reveal><span class="log-ic">⚡</span><span class="log-n"><b>DEX</b> (Dexterity)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#22c55e" data-reveal><span class="log-ic">🍎</span><span class="log-n"><b>Food</b> (HP)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#38bdf8" data-reveal><span class="log-ic">💧</span><span class="log-n"><b>Water</b> (Hydration)</span><span class="log-a">›</span></div>
+      <div class="log-row" style="--c:#6366f1" data-reveal><span class="log-ic">🌙</span><span class="log-n"><b>Sleep</b> (MP)</span><span class="log-a">›</span></div>
+    </div>
+  </section>
+
   <!-- ============ ANALYTICS ============ -->
-  <section class="section" id="analytics">
+  <section class="section" id="analytics" data-wp="DATA">
     <div class="section-head">
       <span class="section-kicker">// DATA PIPELINE ACTIVE</span>
       <h2 class="section-title">ANALYTICS</h2>
       <p class="section-lede">
-        A real data + ML pipeline turns your logs into trends, energy curves and
-        forecasts — so you can see where every stat is heading before you get there.
+        Six tabs — <b>Energy</b>, <b>Stats</b>, <b>Recovery</b>, <b>Journey</b>,
+        <b>Body</b> and <b>Trends</b> — built on a real data + ML pipeline that
+        turns your logs into curves and forecasts.
       </p>
     </div>
 
     <div class="analytics-grid">
       <!-- Energy ring -->
-      <div class="app-panel a-energy" data-reveal>
+      <div class="app-panel a-energy holo" data-reveal>
         <div class="a-sect">ENERGY TODAY</div>
         <div class="energy-row">
           <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
             <circle class="ring-bg" cx="60" cy="60" r="52"></circle>
-            <circle class="ring-fg" cx="60" cy="60" r="52" data-pct="82"></circle>
-            <text x="60" y="70" class="ring-num">82</text>
+            <circle class="ring-fg" cx="60" cy="60" r="52" data-pct="84"></circle>
+            <text x="60" y="70" class="ring-num">84</text>
           </svg>
           <div class="energy-meta">
             <div class="a-label" style="color:#22c55e">EXCELLENT</div>
             <div class="a-desc">Confidence: HIGH</div>
-            <div class="a-desc">Last night: 7.5h sleep</div>
+            <div class="a-desc">Based on metabolism + last night's sleep</div>
+            <div class="a-desc">100% recovery · 8h slept · 2010 burn</div>
           </div>
         </div>
         <div class="energy-legend">
@@ -388,14 +612,14 @@
       </div>
 
       <!-- STR trend + chart -->
-      <div class="app-panel a-trend" data-reveal>
+      <div class="app-panel a-trend holo" data-reveal>
         <div class="a-sect">STR TODAY</div>
         <div class="trend-row">
-          <div class="trend-circle" style="--c:#ef4444">LV12</div>
+          <div class="trend-circle" style="--c:#ef4444">LV6</div>
           <div>
-            <div class="a-label" style="color:#ef4444">APPRENTICE</div>
-            <div class="a-desc">5 sessions · 42 sets (7d)</div>
-            <div class="a-desc">38 total workouts · 6 day streak</div>
+            <div class="a-label" style="color:#ef4444">NOVICE</div>
+            <div class="a-desc">9 sessions · 22 sets (7d)</div>
+            <div class="a-desc">33 total workouts · 6 day streak</div>
           </div>
         </div>
         <div class="chart-label">STR SCORE (7 DAYS)</div>
@@ -406,39 +630,39 @@
       </div>
 
       <!-- ML prediction -->
-      <div class="app-panel a-pred" data-reveal>
+      <div class="app-panel a-pred holo" data-reveal>
         <div class="a-row"><div class="a-sect">PREDICTION</div><span class="a-badge">◈ STR</span></div>
         <div class="pred-stats">
-          <div class="pred-item"><span class="pred-v" style="color:#ef4444">LV 15</span><span class="pred-l">PROJECTED</span></div>
+          <div class="pred-item"><span class="pred-v" style="color:#ef4444">128.3</span><span class="pred-l">DOTS SCORE</span></div>
           <div class="pred-div"></div>
           <div class="pred-item"><span class="pred-v" style="color:#22c55e">HIGH</span><span class="pred-l">CONFIDENCE</span></div>
         </div>
-        <p class="pred-note">◈ On track for STR Level 15 (APPRENTICE) by Aug 20.</p>
+        <p class="pred-note">◈ Strength-to-bodyweight, modelled from your logged sets. On track for STR Level 8 by Aug 24.</p>
       </div>
 
       <!-- Muscle volume -->
-      <div class="app-panel a-vol" data-reveal>
+      <div class="app-panel a-vol holo" data-reveal>
         <div class="a-sect">MUSCLE VOLUME (14D)</div>
         <div class="vol-chips">
-          <span class="vol" style="--c:#ef4444"><i></i>Chest <b>18s</b></span>
-          <span class="vol" style="--c:#f59e0b"><i></i>Back <b>14s</b></span>
-          <span class="vol" style="--c:#3b82f6"><i></i>Legs <b>16s</b></span>
+          <span class="vol" style="--c:#ef4444"><i></i>Chest <b>16s</b></span>
+          <span class="vol" style="--c:#3b82f6"><i></i>Back <b>2s</b></span>
+          <span class="vol" style="--c:#22c55e"><i></i>Arms <b>1s</b></span>
+          <span class="vol" style="--c:#c084fc"><i></i>Legs <b>4s</b></span>
           <span class="vol" style="--c:#818cf8"><i></i>Shoulders <b>9s</b></span>
-          <span class="vol" style="--c:#22c55e"><i></i>Arms <b>11s</b></span>
           <span class="vol" style="--c:#ec4899"><i></i>Core <b>7s</b></span>
         </div>
-        <div class="a-sect" style="margin-top:18px">OVERVIEW</div>
+        <div class="a-sect" style="margin-top:18px">FOOD ANALYTICS</div>
         <ul class="overview">
-          <li>◦ Energy: 82 / 100</li>
-          <li>◦ STR: Level 12 (Apprentice) · 610 XP this week</li>
-          <li>◦ All stats tracked — complete athlete!</li>
+          <li>◦ 370 kcal today · 12g protein · 8% of goal</li>
+          <li>◦ Energy balance today: −1640 kcal</li>
+          <li>◦ Increase daily protein to better support recovery</li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- ============ AI COACH ============ -->
-  <section class="section split reverse" id="coach">
+  <section class="section split reverse" id="coach" data-wp="COACH">
     <div class="split-copy">
       <span class="section-kicker">// TRAINING AI</span>
       <h2 class="section-title left">AI COACH</h2>
@@ -458,7 +682,7 @@
     </div>
 
     <!-- Coach chat mockup -->
-    <div class="app-panel coach-chat" data-reveal>
+    <div class="app-panel coach-chat holo" data-reveal>
       <div class="chat-head">
         <span class="chat-ic">🤖</span>
         <span class="chat-title">AI COACH</span>
@@ -516,6 +740,76 @@
     </div>
   </section>
 
+  <!-- ============ WIDGETS ============ -->
+  <section class="section" id="widgets" data-wp="WIDGETS">
+    <div class="section-head">
+      <span class="section-kicker">// HOME SCREEN</span>
+      <h2 class="section-title">YOUR STATS, ALWAYS ON</h2>
+      <p class="section-lede">
+        Four widgets keep the character sheet on your home screen. Glance down
+        and your streak, profile shape, levels and vitals are already there.
+      </p>
+    </div>
+
+    <div class="widget-grid">
+      <div>
+        <div class="widget" data-reveal>
+          <div class="wg-streak">
+            <div class="wg-flame" aria-hidden="true">🔥</div>
+            <div class="wg-big">5</div>
+            <div class="wg-sub">DAY STREAK</div>
+          </div>
+        </div>
+        <div class="widget-cap">Streak</div>
+      </div>
+
+      <div>
+        <div class="widget wg-radar" data-reveal>
+          <svg viewBox="0 0 120 120" aria-hidden="true">
+            <polygon points="60,12 106,45 88,99 32,99 14,45" fill="none" stroke="#3f4a63" stroke-width="1"/>
+            <polygon points="60,31 83,48 74,75 46,75 37,48" fill="none" stroke="#333c52" stroke-width="1"/>
+            <polygon points="60,16 78,52 68,78 50,72 42,50" fill="rgba(59,130,246,.22)" stroke="#3b82f6" stroke-width="2"/>
+            <circle cx="60" cy="16" r="4" fill="#ef4444"/>
+            <circle cx="78" cy="52" r="4" fill="#f97316"/>
+            <circle cx="68" cy="78" r="4" fill="#f59e0b"/>
+            <circle cx="50" cy="72" r="4" fill="#ec4899"/>
+            <circle cx="42" cy="50" r="4" fill="#818cf8"/>
+          </svg>
+        </div>
+        <div class="widget-cap">Profile</div>
+      </div>
+
+      <div class="w2">
+        <div class="widget" data-reveal>
+          <div class="wg-rows">
+            <div class="wg-row" style="--c:#ef4444"><span class="wg-k">STR</span><span class="wg-lv">Lv 5</span><span class="wg-bar"><i data-w="34"></i></span></div>
+            <div class="wg-row" style="--c:#ec4899"><span class="wg-k">STM</span><span class="wg-lv">Lv 1</span><span class="wg-bar"><i data-w="92"></i></span></div>
+            <div class="wg-row" style="--c:#818cf8"><span class="wg-k">INT</span><span class="wg-lv">Lv 2</span><span class="wg-bar"><i data-w="56"></i></span></div>
+            <div class="wg-row" style="--c:#f59e0b"><span class="wg-k">SPD</span><span class="wg-lv">Lv 2</span><span class="wg-bar"><i data-w="12"></i></span></div>
+            <div class="wg-row" style="--c:#f97316"><span class="wg-k">DEX</span><span class="wg-lv">Lv 1</span><span class="wg-bar"><i data-w="88"></i></span></div>
+          </div>
+        </div>
+        <div class="widget-cap">Attributes</div>
+      </div>
+
+      <div class="w2">
+        <div class="widget" data-reveal>
+          <div class="wg-vit">
+            <div>
+              <div class="wg-vrow-top"><span class="c-str">HP</span><span>7 / 100</span></div>
+              <div class="wg-bar" style="--c:#ef4444"><i data-w="7"></i></div>
+            </div>
+            <div>
+              <div class="wg-vrow-top"><span class="c-mp">MP</span><span>770 / 1400</span></div>
+              <div class="wg-bar" style="--c:#6366f1"><i data-w="55"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="widget-cap">Vitals</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ SYSTEM / TABS ============ -->
   <section class="section" id="system">
     <div class="section-head">
@@ -523,12 +817,12 @@
       <h2 class="section-title">FIVE SCREENS, ONE LOOP</h2>
     </div>
     <div class="feature-grid">
-      <article class="feat" style="--c:#3B82F6" data-reveal><div class="feat-ic">◉</div><h3>STATUS</h3><p>Your live character sheet — attributes, vitals and rank, updated in real time.</p></article>
-      <article class="feat" style="--c:#ef4444" data-reveal><div class="feat-ic">⚔</div><h3>QUESTS</h3><p>A daily board of tiered missions that turn your goals into XP.</p></article>
-      <article class="feat" style="--c:#f59e0b" data-reveal><div class="feat-ic">✎</div><h3>LOG</h3><p>One tap to log training, food, water and sleep. Scan a meal to auto-track nutrition.</p></article>
-      <article class="feat" style="--c:#818cf8" data-reveal><div class="feat-ic">📈</div><h3>ANALYTICS</h3><p>Trends, energy curves and rank forecasts from a real ML pipeline.</p></article>
-      <article class="feat" style="--c:#22c55e" data-reveal><div class="feat-ic">🤖</div><h3>COACH</h3><p>An AI coach that reads your stats and hands you saveable plans.</p></article>
-      <article class="feat" style="--c:#38bdf8" data-reveal><div class="feat-ic">❤</div><h3>HEALTH SYNC</h3><p>Apple Health &amp; Health Connect flow in steps, workouts, HRV, sleep and more.</p></article>
+      <article class="feat holo" style="--c:#3B82F6" data-reveal><div class="feat-ic">◉</div><h3>STATUS</h3><p>Your live character sheet — class, attributes, vitals and rank, updated in real time.</p></article>
+      <article class="feat holo" style="--c:#ef4444" data-reveal><div class="feat-ic">⚔</div><h3>QUESTS</h3><p>A daily board of tiered missions that turn your goals into XP.</p></article>
+      <article class="feat holo" style="--c:#f59e0b" data-reveal><div class="feat-ic">✎</div><h3>LOG</h3><p>One tap to log training, food, water and sleep. Scan a meal to auto-track nutrition.</p></article>
+      <article class="feat holo" style="--c:#818cf8" data-reveal><div class="feat-ic">📈</div><h3>ANALYTICS</h3><p>Trends, energy curves and rank forecasts from a real ML pipeline.</p></article>
+      <article class="feat holo" style="--c:#22c55e" data-reveal><div class="feat-ic">🤖</div><h3>COACH</h3><p>An AI coach that reads your stats and hands you saveable plans.</p></article>
+      <article class="feat holo" style="--c:#38bdf8" data-reveal><div class="feat-ic">❤</div><h3>HEALTH SYNC</h3><p>Apple Health &amp; Health Connect flow in steps, workouts, HRV, sleep and more.</p></article>
     </div>
   </section>
 
@@ -547,8 +841,8 @@
   </section>
 
   <!-- ============ DOWNLOAD / CTA ============ -->
-  <section class="cta" id="download">
-    <div class="cta-inner" data-reveal>
+  <section class="cta" id="download" data-wp="START">
+    <div class="cta-inner holo" data-reveal>
       <img class="app-tile" src="assets/respawn-icon.png" alt="Respawn app icon" width="88" height="88" />
       <div class="status-chip"><span class="dot"></span> READY PLAYER ONE</div>
       <h2 class="cta-title">INSERT COIN</h2>
@@ -569,5 +863,36 @@
   </footer>
 
   <script src="script.js"></script>
+  <script type="module">
+    import { initScene } from './scene.js';
+    try {
+      const canvas = document.getElementById('world');
+      const api = initScene(canvas);
+      document.body.classList.add('webgl');
+      window.RESPAWN_3D = api;
+      window.dispatchEvent(new CustomEvent('respawn:3dready'));
+    } catch (err) {
+      console.warn('[respawn] 3D layer unavailable, falling back to 2D:', err);
+      window.dispatchEvent(new CustomEvent('respawn:3dfailed'));
+    }
+  </script>
+  <script>
+    /* A module that fails to LOAD (CORS on file://, blocked CDN, no import-map
+       support) never reaches the try/catch above, so watch for it here. */
+    (function () {
+      var settled = false;
+      function fail() {
+        if (settled || window.RESPAWN_3D) return;
+        settled = true;
+        window.dispatchEvent(new CustomEvent('respawn:3dfailed'));
+      }
+      window.addEventListener('respawn:3dready', function () { settled = true; });
+      window.addEventListener('respawn:3dfailed', function () { settled = true; });
+      window.addEventListener('error', function (e) {
+        if (e.target && e.target.tagName === 'SCRIPT') fail();
+      }, true);
+      setTimeout(fail, 2500);
+    })();
+  </script>
 </body>
 </html>

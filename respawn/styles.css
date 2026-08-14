@@ -1,5 +1,5 @@
 /* =========================================================
-   RESPAWN — marketing site
+   RESPAWN, marketing site
    Theme mirrored from the app (src/theme):
    bg #1A1B26 · surface #111827 · surfaceAlt #0f172a
    accent #257bf4 / #3B82F6 · sharp 1px neon borders, radius ~0-4
@@ -149,6 +149,13 @@ a { color: inherit; text-decoration: none; }
 .nav-links a { font-size: 18px; color: var(--text-2); text-transform: uppercase; letter-spacing: 1px; }
 .nav-links a:hover { color: var(--link); text-shadow: 0 0 10px var(--link); }
 .nav .btn { margin-left: 0; }
+
+/* link back up to the parent company site */
+.nav-company {
+  margin-left: 22px; font-size: 15px; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
+}
+.nav-company:hover { color: var(--link); text-shadow: 0 0 10px var(--link); }
 
 /* ---------- HERO ---------- */
 .hero {
@@ -587,6 +594,7 @@ a { color: inherit; text-decoration: none; }
   .feature-grid { grid-template-columns: repeat(2,1fr); }
   .loop { grid-template-columns: repeat(2,1fr); }
   .nav-links { display: none; }
+  .nav-company { margin-left: auto; }
   .split, .split.reverse { grid-template-columns: 1fr; }
   .split.reverse .split-copy { order: 0; }
   .analytics-grid { grid-template-columns: 1fr; }
@@ -791,7 +799,7 @@ html.booting { overflow: hidden; }
 
 /* --- player panel, top-left --- */
 /* Hidden by default and only shown once the viewport is wide enough that it
-   clears the centred 1160px content column — otherwise the slim strip above
+   clears the centred 1160px content column, otherwise the slim strip above
    carries the HUD role. */
 .hud-player {
   display: none;

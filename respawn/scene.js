@@ -1,5 +1,5 @@
 /* =========================================================
-   RESPAWN — 3D world layer
+   RESPAWN, 3D world layer
    A single WebGL context that renders the character's stat
    rig (the pentagon PROFILE chart from the app) as a real 3D
    object, plus an ambient particle field and horizon grid.
@@ -30,7 +30,7 @@ const RIG_RADIUS = 2.2;          // world units, matches a "1.0" stat
 const PLANE_DEPTH = 10;          // distance from camera the rig lives at
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* Pentagon vertex direction, STR first at the top then clockwise — matching
+/* Pentagon vertex direction, STR first at the top then clockwise, matching
    the app's PROFILE chart. Y is negated because WebGL is +Y-up while the
    screen-space angle convention here (and the 2D fallback) is +Y-down. */
 function dir(i, n = 5) {
@@ -129,7 +129,7 @@ export function initScene(canvas) {
     })));
   }
 
-  /* the player's filled stat shape — triangle fan from centre */
+  /* the player's filled stat shape, a triangle fan from centre */
   const fanCount = 5;
   const fanGeo = new THREE.BufferGeometry();
   const fanPos = new Float32Array(fanCount * 3 * 3);
@@ -262,7 +262,7 @@ export function initScene(canvas) {
   }));
   scene.add(stars);
 
-  /* horizon grid — the "world floor" */
+  /* horizon grid, the "world floor" */
   const grid = new THREE.GridHelper(90, 60, 0x2563eb, 0x14306b);
   grid.material.transparent = true;
   grid.material.opacity = 0.32;
@@ -446,7 +446,7 @@ export function initScene(canvas) {
     const idleY = Math.cos(t * 0.35) * 0.12;
     rig.rotation.x += ((pointer.y * 0.35 + idleX) - rig.rotation.x) * 0.05;
     rig.rotation.y += ((-pointer.x * 0.5 + idleY) - rig.rotation.y) * 0.05;
-    /* Only a slight sway — a full spin would carry STR/DEX/... away from the
+    /* Only a slight sway. A full spin would carry STR/DEX/... away from the
        fixed axis positions they occupy in the app. */
     spin.rotation.z = reduceMotion ? 0 : Math.sin(t * 0.28) * 0.05;
     ring.rotation.z = reduceMotion ? 0 : -t * 0.14;

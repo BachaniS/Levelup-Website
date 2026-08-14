@@ -1,0 +1,5 @@
+# Source material for the site, never published.
+# Contains resumes with personal phone numbers and email addresses.
+.private/
+
+.DS_Store

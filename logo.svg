@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Not Another Fitness App">
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="#0d0f17"/>
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="none" stroke="#26314d" stroke-width="2.5"/>
+  <path d="M15.5 34.5V13.5L32.5 34.5V13.5" fill="none" stroke="#e9edf7" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path d="M10 39.5L38 8.5" fill="none" stroke="#3b82f6" stroke-width="4.25" stroke-linecap="round"/>
+</svg>

@@ -1,5 +1,5 @@
 /* =========================================================
-   RESPAWN — site game layer
+   RESPAWN, site game layer
    Boot sequence · persistent HUD · scroll XP & levelling ·
    achievement toasts · playable quest board · synth SFX ·
    holographic card tilt · reticle cursor · scroll reveals.
@@ -32,7 +32,7 @@
       return ctx;
     }
 
-    /* a short square-wave blip — the classic UI tick */
+    /* a short square-wave blip, the classic UI tick */
     function tone(freq, dur, type, vol, slideTo) {
       if (!on) return;
       var c = ensure();
@@ -145,7 +145,7 @@
       '<span class="toast-ic">' + (kind === 'xp' ? '✦' : '🏆') + '</span>' +
       '<span><span class="toast-k">' + k + '</span><span class="toast-t">' + t + '</span></span>';
     toastHost.appendChild(el);
-    /* never stack more than 3 — fast scrolling can otherwise bury the page */
+    /* never stack more than 3, since fast scrolling can otherwise bury the page */
     while (toastHost.children.length > 3) toastHost.removeChild(toastHost.firstChild);
     if (kind !== 'xp') Sfx.quest();
     setTimeout(function () { el.remove(); }, 4800);
@@ -358,7 +358,7 @@
   });
 
   var ACHIEVEMENTS = {
-    class:      'Class assigned — Paladin',
+    class:      'Class assigned: Paladin',
     attributes: 'Character sheet decoded',
     profile:    'Profile shape rendered',
     quests:     'Quest board discovered',
@@ -366,7 +366,7 @@
     analytics:  'Data pipeline traced',
     coach:      'Coach came online',
     widgets:    'Home screen equipped',
-    download:   'Reached the end — Insert Coin'
+    download:   'Reached the end: Insert Coin'
   };
   var seen = {};
 
@@ -503,7 +503,7 @@
       if (cleared === quests.length) {
         setTimeout(function () {
           banner('S RANK', 'BOARD CLEARED · +150 MIN');
-          toast('ach', 'ACHIEVEMENT UNLOCKED', 'Perfect day — full board cleared');
+          toast('ach', 'ACHIEVEMENT UNLOCKED', 'Perfect day: full board cleared');
           Sfx.level();
           pulse3D();
         }, 450);
@@ -779,7 +779,7 @@
   });
 
   /* =======================================================
-     13. KONAMI CODE — max out the character
+     13. KONAMI CODE, max out the character
      ======================================================= */
   var KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   var kIdx = 0;
@@ -791,7 +791,7 @@
       player.level = 6; player.xp = 100;
       renderHud();
       banner('S RANK', 'SOVEREIGN UNLOCKED');
-      toast('ach', 'SECRET ACHIEVEMENT', 'Konami code — all stats maxed');
+      toast('ach', 'SECRET ACHIEVEMENT', 'Konami code: all stats maxed');
       Sfx.level();
       ['STR','DEX','SPD','STM','INT'].forEach(function (s) { setStat(s, 1); });
       pulse3D();

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Respawn Privacy Protocol</title>
+<meta name="description" content="Privacy Protocol for Respawn." />
+<link rel="icon" href="/respawn/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0e0f16; --surface: #111827; --text: rgba(255,255,255,0.90);
+    --accent: #257bf4; --label: #7aaef8; --link: #38bdf8;
+    --border-soft: rgba(37,123,244,0.22);
+    --pixel: 'Press Start 2P', system-ui, sans-serif;
+    --mono: 'VT323', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 3rem 1.25rem 5rem; background: var(--bg); color: var(--text);
+    font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 44rem; margin: 0 auto; }
+  a { color: var(--link); }
+  .back {
+    font-family: var(--mono); font-size: 1.25rem; color: var(--label);
+    text-decoration: none; display: inline-block; margin-bottom: 2rem;
+  }
+  .back:hover { color: var(--link); }
+  h1 {
+    font-family: var(--pixel); font-size: clamp(0.95rem, 3.4vw, 1.4rem);
+    line-height: 1.5; color: #fff; margin: 0 0 0.75rem;
+  }
+  h2 {
+    font-family: var(--mono); font-size: 1.5rem; letter-spacing: 0.02em;
+    color: var(--label); margin: 2.5rem 0 0.5rem;
+  }
+  .updated {
+    font-family: var(--mono); font-size: 1.15rem; color: var(--label);
+    opacity: 0.75; margin: 0 0 2rem;
+  }
+  .intro {
+    background: var(--surface); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 1rem 1.15rem;
+  }
+  p { margin: 0 0 1rem; }
+  footer {
+    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: 1.1rem; color: var(--label); opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/respawn/legal/">&lt; Respawn legal</a>
+  <h1>Privacy Protocol</h1>
+  <p class="updated">Last updated: August 16, 2026</p>
+  <p class="intro">This Privacy Protocol explains what Respawn collects, why, and the choices you have. We aim to collect only what the game needs.</p>
+  <h2>1. What We Collect</h2>
+      <p>• Account info: email address and display/player name.<br />• Profile you provide: age, sex, height, weight and goals.<br />• Activity you log: workouts, stretches, study/quiz results, sleep, hydration and food.<br />• Health data you authorize (Apple Health on iOS, Health Connect on Android): workouts, steps, active energy, heart-rate variability, resting heart rate, sleep, body weight, water and nutrition.<br />• Usage analytics: basic, aggregated app-usage events to improve the game.</p>
+  <h2>2. Health Data (Apple Health / Health Connect)</h2>
+      <p>Health data is read only after you explicitly grant permission, and only for the categories you enable in Profile. It is used to auto-track your stats, recovery and vitals. You can revoke access at any time in the iOS Health app, the Android Health Connect app, or by turning off individual toggles in Respawn. We never sell Health data or use it for advertising.</p>
+  <h2>3. On-Device Intelligence</h2>
+      <p>Respawn's machine-learning models (energy, strength, speed, stamina, flexibility and calorie predictions) run on your device. This inference happens locally; your raw health data is not required to leave your phone for predictions.</p>
+  <h2>4. How Your Data Is Stored</h2>
+      <p>Data is cached on your device and synced to your private account in Google Firebase (authentication and Cloud Firestore) so it's available across your devices. It is scoped to your user ID and protected by Firebase security rules.</p>
+  <h2>5. How We Use It</h2>
+      <p>To run the game (stats, quests, recovery, coaching), to sync your account, to improve features, and to keep the service secure. We do not sell your personal data.</p>
+  <h2>6. Sharing</h2>
+      <p>We share data only with service providers that operate the app on our behalf (e.g. Google Firebase for auth/database, and Google Gemini to generate quests, coaching and quizzes from prompts you trigger), or when required by law. These providers process data under their own terms.</p>
+      <p>If Respawn is later operated by a company we form for that purpose, or is involved in a merger, acquisition or sale of assets, your data may be transferred to that entity. It would remain subject to this Privacy Protocol until you are told otherwise, and we will surface any such change in the app.</p>
+  <h2>7. Your Choices &amp; Rights</h2>
+      <p>You can edit your profile, toggle Health sync off, and sign out at any time. You can delete your account from inside the app: open Profile and choose Delete account. This permanently erases your account and the data attached to it, including your logs, stats, quests, scans and wallet, and clears cached data on that device. It cannot be undone.</p>
+      <p>Deleting your account does not cancel a paid subscription. Subscriptions are billed by Apple and are managed in Settings, your Apple Account, Subscriptions. Cancel there if you no longer want to be charged.</p>
+  <h2>8. Children</h2>
+      <p>Respawn is not directed to children under 13 (or the minimum age required in your country), and we do not knowingly collect their data.</p>
+  <h2>9. Contact</h2>
+      <p>Questions or data requests: support@notanotherfitnessapp.com.</p>
+  <footer>Generated from the text shown inside the app, so the two cannot disagree.</footer>
+</main>
+</body>
+</html>

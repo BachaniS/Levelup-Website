@@ -517,6 +517,14 @@ sup a:hover { text-decoration: underline; }
 }
 .privacy-list b { color: var(--ink); font-weight: 650; }
 
+.privacy-lead a { border-bottom: 1px solid rgba(96, 165, 250, .4); }
+.privacy-links {
+  margin: 16px 0 0 !important;
+  padding-top: 14px; border-top: 1px solid var(--line);
+  font-size: 14px !important; color: var(--ink-3) !important;
+}
+.privacy-links a { white-space: nowrap; }
+
 .roadmap {
   margin-top: 34px;
   border: 1px solid var(--line); border-radius: var(--r);

@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Respawn legal</title>
-<meta name="description" content="Rules of Play, Privacy Protocol, Terms and Subscription Terms for Respawn." />
+<meta name="description" content="Privacy Policy, Subscription Terms, Terms and Conditions, and Rules of Play for Respawn." />
 <link rel="icon" href="/respawn/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,14 +51,22 @@
     font-family: var(--mono); font-size: 1.1rem; color: var(--label); opacity: 0.7;
   }
 
-  ul { list-style: none; padding: 0; margin: 2rem 0 0; }
-  li { margin: 0 0 0.75rem; }
-  li a {
-    display: block; background: var(--surface); border: 1px solid var(--border-soft);
-    border-radius: 10px; padding: 0.9rem 1.15rem; text-decoration: none;
-    font-family: var(--mono); font-size: 1.4rem; color: var(--link);
+  ul {
+    list-style: none; padding: 0; margin: 2rem 0 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
   }
-  li a:hover { border-color: var(--accent); }
+  li { margin: 0; }
+  li a {
+    display: flex; align-items: center; min-height: 100%;
+    background: var(--surface); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 1.15rem 1.15rem; text-decoration: none;
+    font-family: var(--mono); font-size: 1.4rem; line-height: 1.25; color: var(--link);
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  li a:hover { border-color: var(--accent); background: #16213a; }
+  @media (max-width: 30rem) {
+    ul { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -67,10 +75,10 @@
   <h1>Legal</h1>
   <p class="updated">The same text the app shows, published so it can be linked.</p>
   <ul>
-    <li><a href="./rules.html">Rules of Play</a></li>
-    <li><a href="./privacy.html">Privacy Protocol</a></li>
-    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
+    <li><a href="./privacy.html">Privacy Policy</a></li>
     <li><a href="./subscription.html">Subscription Terms</a></li>
+    <li><a href="./terms.html">Terms &amp; Conditions</a></li>
+    <li><a href="./rules.html">Rules of Play</a></li>
   </ul>
   <footer>Respawn is operated by Akshansh Shrivastava and Somesh Bachani.</footer>
 </main>

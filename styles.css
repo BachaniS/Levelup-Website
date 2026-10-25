@@ -388,6 +388,7 @@ sup a:hover { text-decoration: underline; }
   border: 1px solid var(--line-2); border-radius: 999px;
   padding: 8px 15px; background: var(--bg-2); color: var(--ink-2);
 }
+a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: var(--blue); }
 
 .product-body {
   display: grid; grid-template-columns: 1.08fr .92fr; gap: 44px;

@@ -652,7 +652,7 @@ a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: va
 }
 .footer-brand { display: flex; align-items: center; gap: 10px; font-size: 14.5px; }
 .footer p { margin: 0; font-size: 13.5px; color: var(--ink-3); }
-.footer-links { margin-left: auto; display: flex; gap: 20px; }
+.footer-links { margin-left: auto; display: flex; flex-wrap: wrap; gap: 10px 20px; }
 .footer-links a { font-size: 13.5px; color: var(--ink-3); }
 .footer-links a:hover { color: var(--ink); }
 

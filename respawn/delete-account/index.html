@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Delete your Respawn account</title>
+<meta name="description" content="How to delete your Respawn account and its data, in the app or by sending a request to Not Another Fitness App." />
+<link rel="canonical" href="https://notanotherfitnessapp.com/respawn/delete-account/" />
+<link rel="icon" href="/respawn/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0e0f16; --surface: #111827; --text: rgba(255,255,255,0.90);
+    --muted: rgba(255,255,255,0.62);
+    --accent: #257bf4; --label: #7aaef8; --link: #38bdf8; --error: #f87171;
+    --border-soft: rgba(37,123,244,0.22);
+    --pixel: 'Press Start 2P', system-ui, sans-serif;
+    --mono: 'VT323', ui-monospace, monospace;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 3rem 1.25rem 5rem; background: var(--bg); color: var(--text);
+    font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 44rem; margin: 0 auto; }
+  a { color: var(--link); overflow-wrap: anywhere; }
+  .back {
+    font-family: var(--mono); font-size: 1.25rem; color: var(--label);
+    text-decoration: none; display: inline-block; margin-bottom: 2rem;
+  }
+  .back:hover { color: var(--link); }
+  h1 {
+    font-family: var(--pixel); font-size: clamp(0.95rem, 3.4vw, 1.4rem);
+    line-height: 1.5; color: #fff; margin: 0 0 0.75rem;
+  }
+  h2 {
+    font-family: var(--mono); font-size: 1.5rem; letter-spacing: 0.02em;
+    color: var(--label); margin: 2.5rem 0 0.5rem;
+  }
+  .updated {
+    font-family: var(--mono); font-size: 1.15rem; color: var(--label);
+    opacity: 0.75; margin: 0 0 2rem;
+  }
+  .intro {
+    background: var(--surface); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 1rem 1.15rem;
+  }
+  p { margin: 0 0 1rem; }
+  footer {
+    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: 1.1rem; color: var(--label); opacity: 0.7;
+  }
+
+  form {
+    background: var(--surface); border: 1px solid var(--border-soft);
+    border-radius: 10px; padding: 1.35rem 1.15rem 1.15rem; margin: 1.25rem 0 0;
+  }
+  .field { margin: 0 0 1.25rem; }
+  label, .label {
+    display: block; font-family: var(--mono); font-size: 1.3rem; line-height: 1.2;
+    color: var(--label); margin: 0 0 0.4rem;
+  }
+  .optional { color: var(--muted); font-size: 1.1rem; }
+  input[type="email"], input[type="text"], select, textarea {
+    width: 100%; font: inherit; font-size: 16px; color: #fff;
+    background: var(--bg); border: 1px solid var(--border-soft); border-radius: 8px;
+    padding: 0.65rem 0.8rem;
+  }
+  textarea { min-height: 6.5rem; resize: vertical; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent);
+  }
+  .hint { font-size: 0.875rem; line-height: 1.55; color: var(--muted); margin: 0.45rem 0 0; }
+  .confirm { display: flex; gap: 0.7rem; align-items: flex-start; margin: 0 0 1.35rem; }
+  .confirm input { width: 1.1rem; height: 1.1rem; margin: 0.3rem 0 0; flex: none; accent-color: var(--accent); }
+  .confirm label { font: inherit; color: var(--text); margin: 0; }
+  .hp { display: none; }
+  button {
+    font-family: var(--pixel); font-size: 12px; line-height: 1.4; color: #fff;
+    background: var(--accent); border: 1px solid var(--accent); border-radius: 2px;
+    padding: 16px 22px; cursor: pointer;
+    transition: transform 0.12s ease, box-shadow 0.2s ease;
+  }
+  button:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(59,130,246,0.45); }
+  button:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
+  button:disabled { opacity: 0.55; cursor: default; transform: none; box-shadow: none; }
+  .status { margin: 1rem 0 0; min-height: 1.7em; }
+  .status.is-error { color: var(--error); }
+
+  /* Shown after a send, by the script or by FormSubmit's redirect back to #sent. */
+  .sent {
+    background: var(--surface); border: 1px solid var(--accent);
+    border-radius: 10px; padding: 1rem 1.15rem; margin: 1.25rem 0 0;
+  }
+  .sent:not(:target) { display: none; }
+  .sent:target + form { display: none; }
+  .sent:focus { outline: none; }
+  .sent strong { display: block; font-family: var(--mono); font-size: 1.4rem; color: #fff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    button, button:hover { transition: none; transform: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/respawn/">&lt; Respawn</a>
+  <h1>Delete your account</h1>
+  <p class="updated">Respawn, by Not Another Fitness App</p>
+  <p class="intro">You can delete your Respawn account and the data attached to it at any time. The quickest way is inside the app. If you can't get into the app, send us a request with the form below.</p>
+
+  <h2>In the app</h2>
+  <p>Open Profile and choose Delete account. This permanently erases your account and the data attached to it, and clears cached data on that device. It cannot be undone.</p>
+
+  <h2>Without the app</h2>
+  <p>This form goes to our support team at <a href="mailto:support@notanotherfitnessapp.com">support@notanotherfitnessapp.com</a>. Before we delete anything, we'll email the address on the account to confirm the request came from you.</p>
+
+  <div class="sent" id="sent" tabindex="-1">
+    <strong>Request sent</strong>
+    We'll email the address on the account to confirm it's you before we delete anything. If you don't hear from us, write to <a href="mailto:support@notanotherfitnessapp.com">support@notanotherfitnessapp.com</a>.
+  </div>
+  <form id="deleteForm" action="https://formsubmit.co/support@notanotherfitnessapp.com" method="POST">
+    <input type="hidden" name="_subject" value="Respawn account deletion request" />
+    <input type="hidden" name="_template" value="table" />
+    <input type="hidden" name="_next" value="https://notanotherfitnessapp.com/respawn/delete-account/#sent" />
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+    <div class="field">
+      <label for="email">Email on your Respawn account</label>
+      <input id="email" type="email" name="email" autocomplete="email" required aria-describedby="emailHint" />
+      <p class="hint" id="emailHint">If you used Sign in with Apple and chose Hide My Email, this address ends in @privaterelay.appleid.com. You can find it in your Apple Account settings under Sign in with Apple.</p>
+    </div>
+
+    <div class="field">
+      <label for="method">How do you sign in?</label>
+      <select id="method" name="Sign-in method" required>
+        <option value="" selected disabled>Choose one</option>
+        <option>Email and password</option>
+        <option>Sign in with Apple</option>
+        <option>Sign in with Google</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="player">Player name <span class="optional">(optional)</span></label>
+      <input id="player" type="text" name="Player name" autocomplete="off" aria-describedby="playerHint" />
+      <p class="hint" id="playerHint">The name on your profile. It helps us find the right account.</p>
+    </div>
+
+    <div class="field">
+      <label for="details">Anything we should know <span class="optional">(optional)</span></label>
+      <textarea id="details" name="Details"></textarea>
+    </div>
+
+    <div class="confirm">
+      <input id="confirm" type="checkbox" name="Understands deletion is permanent" value="Yes" required />
+      <label for="confirm">I understand this permanently deletes my Respawn account and its data, and that it can't be undone.</label>
+    </div>
+
+    <button type="submit">Send request</button>
+    <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+  </form>
+
+  <h2>What gets deleted</h2>
+  <p>Your account and the data attached to it, including your profile, logs, stats, quests, scans and wallet.</p>
+
+  <h2>What is kept</h2>
+  <p>AI request logs. When you use an AI feature, we log the text of the request and the reply. These logs aren't linked to your account and contain no user ID, so they aren't part of the deletion. They expire on their own: the full text record after 3 days, and a reduced record (your prompt, timings and token counts, without the reply) after up to 180 days. See section 6 of the <a href="/respawn/legal/privacy.html">Privacy Policy</a>.</p>
+  <p>Your subscription. Deleting your account doesn't cancel a paid subscription. Subscriptions are billed by Apple and managed in Settings, your Apple Account, Subscriptions. Cancel there if you no longer want to be charged.</p>
+
+  <footer>Respawn is operated by Akshansh Shrivastava and Somesh Bachani.</footer>
+</main>
+
+<script>
+  // Post through FormSubmit's AJAX endpoint so people stay on this page. Without
+  // JavaScript the form still posts normally and FormSubmit redirects back to #sent.
+  const form = document.getElementById('deleteForm');
+  const status = document.getElementById('formStatus');
+  const button = form.querySelector('button');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    button.disabled = true;
+    status.classList.remove('is-error');
+    status.textContent = 'Sending…';
+
+    try {
+      const res = await fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const reply = await res.json();
+      // FormSubmit reports success as the string "true".
+      if (!res.ok || String(reply.success) !== 'true') throw new Error(reply.message);
+      form.reset();
+      status.textContent = '';
+      location.hash = 'sent';
+      document.getElementById('sent').focus();
+    } catch (err) {
+      // Fall back to the person's own mail app, with what they typed already filled in.
+      const body = [
+        'Email on the account: ' + data.email,
+        'Sign-in method: ' + data['Sign-in method'],
+        'Player name: ' + (data['Player name'] || ''),
+        '',
+        data.Details || '',
+      ].join('\n');
+      const mail = document.createElement('a');
+      mail.href = 'mailto:support@notanotherfitnessapp.com'
+        + '?subject=' + encodeURIComponent('Respawn account deletion request')
+        + '&body=' + encodeURIComponent(body);
+      mail.textContent = 'email it to us instead';
+      status.classList.add('is-error');
+      status.replaceChildren("That didn't send. Please ", mail, '.');
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

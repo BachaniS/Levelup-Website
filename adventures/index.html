@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESPAWN ADVENTURES | Your training powers your hero</title>
+  <meta name="description" content="Respawn Adventures is a pixel-art action RPG for iPhone where your hero is your real Respawn character. Train, eat and sleep well in Respawn, and you hit harder, last longer and cast more spells here." />
+
+  <link rel="icon" type="image/png" href="assets/icon-512.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#0b0a10" />
+
+  <link rel="canonical" href="https://notanotherfitnessapp.com/adventures/" />
+
+  <meta property="og:title" content="RESPAWN ADVENTURES" />
+  <meta property="og:description" content="A pixel-art action RPG where your hero is your real Respawn character. Train in Respawn, fight here." />
+  <meta property="og:url" content="https://notanotherfitnessapp.com/adventures/" />
+  <meta property="og:site_name" content="Not Another Fitness App" />
+  <meta property="og:image" content="https://notanotherfitnessapp.com/adventures/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- The game's own fonts: Press Start 2P (titles) and VT323 (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="assets/hall-wide.png" media="(min-width: 721px)" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Respawn Adventures, top of page">
+      <img class="brand-icon" src="assets/icon-512.png" alt="" width="30" height="30" />
+      <span class="brand-name">RESPAWN<span class="brand-sub">ADVENTURES</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#hero-is-you">HERO</a>
+      <a href="#classes">CLASSES</a>
+      <a href="#worlds">WORLDS</a>
+      <a href="#bosses">BOSSES</a>
+      <a href="#rift">RIFT</a>
+      <a href="#coop">CO-OP</a>
+    </nav>
+    <a href="../" class="nav-company" title="Not Another Fitness App, company site">↖ COMPANY</a>
+    <a href="#download" class="btn btn-sm btn-gold">GET IT</a>
+  </header>
+
+  <main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <picture class="hero-art">
+      <source media="(max-width: 720px)" srcset="assets/hall.png" />
+      <img src="assets/hall-wide.png" width="3840" height="1646"
+           alt="The hero stands on a purple runner in a torch-lit hall, in front of seven bosses under their banners: the Storm Titan, Sol the Sun Sentinel, the Frost Wraith, the Crimson Dragon, the Stone Golem, the Moth Queen and the Iron Warden." />
+    </picture>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="embers" id="embers" aria-hidden="true"></div>
+
+    <div class="hero-copy">
+      <div class="chip chip-gold"><span class="dot"></span> COMING SOON TO THE APP STORE</div>
+      <h1 class="hero-title"><span>RESPAWN</span><span class="hero-title-2">ADVENTURES</span></h1>
+      <p class="hero-tagline">Your real training powers your hero.</p>
+      <p class="hero-sub">
+        A pixel-art action RPG for iPhone where your hero is your
+        <a href="../respawn/" class="inline-link">Respawn</a> character. Train, eat and sleep
+        well in Respawn, and you hit harder, last longer and cast more spells here.
+      </p>
+      <div class="hero-actions">
+        <span class="btn btn-soon" aria-disabled="true">App Store<small>Coming soon</small></span>
+        <a href="#hero-is-you" class="btn btn-blue">▶ PRESS START</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NUMBERS ============ -->
+  <section class="numbers" aria-label="At a glance">
+    <div class="num"><span class="num-v">6</span><span class="num-l">Worlds</span></div>
+    <div class="num"><span class="num-v">30</span><span class="num-l">Hand-made levels</span></div>
+    <div class="num"><span class="num-v">10</span><span class="num-l">Bosses</span></div>
+    <div class="num"><span class="num-v">31</span><span class="num-l">Weapons</span></div>
+    <div class="num"><span class="num-v">11</span><span class="num-l">Ultimates</span></div>
+    <div class="num"><span class="num-v">4</span><span class="num-l">Heroes in co-op</span></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>TRAIN IN RESPAWN</span><i>◆</i><span>FIGHT IN ADVENTURES</span><i>◆</i>
+      <span>STR → ATTACK</span><i>◆</i><span>SLEEP → MANA</span><i>◆</i><span>STEPS → SPEED</span><i>◆</i>
+      <span>MEALS → HEALTH</span><i>◆</i><span>STREAK → COINS</span><i>◆</i><span>QUESTS → ULTIMATES</span><i>◆</i>
+      <span>TRAIN IN RESPAWN</span><i>◆</i><span>FIGHT IN ADVENTURES</span><i>◆</i>
+      <span>STR → ATTACK</span><i>◆</i><span>SLEEP → MANA</span><i>◆</i><span>STEPS → SPEED</span><i>◆</i>
+      <span>MEALS → HEALTH</span><i>◆</i><span>STREAK → COINS</span><i>◆</i><span>QUESTS → ULTIMATES</span><i>◆</i>
+    </div>
+  </div>
+
+  <!-- ============ YOUR HERO IS YOU ============ -->
+  <section class="section" id="hero-is-you">
+    <div class="section-head">
+      <span class="kicker">// SYNCED FROM RESPAWN</span>
+      <h2 class="section-title">YOUR HERO IS YOU</h2>
+      <p class="lede">
+        Your Respawn stats are your hero's stats. Every lift, run, meal and night
+        of sleep you log in Respawn shows up here as attack, health, mana and speed.
+        Gear helps, but training is the bigger lever: the game checks that 30 levels
+        of training beat the best gear in the shop.
+      </p>
+    </div>
+
+    <div class="sync-flow" data-reveal>
+      <a class="sync-node" href="../respawn/">
+        <img src="../respawn/assets/respawn-icon.png" alt="" width="56" height="56" />
+        <span><b>RESPAWN</b><small>Your training, meals, sleep &amp; steps</small></span>
+      </a>
+      <div class="sync-pipe" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="sync-label">READS<br />NEVER WRITES</div>
+      <div class="sync-pipe" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="sync-node">
+        <img src="assets/icon-512.png" alt="" width="56" height="56" />
+        <span><b>YOUR HERO</b><small>Attack, health, mana, speed</small></span>
+      </div>
+    </div>
+
+    <div class="train-wrap">
+      <!-- Interactive training table -->
+      <div class="panel train" id="train" data-reveal>
+        <div class="panel-title">TRAINING TABLE <small>try it</small></div>
+
+        <div class="train-top">
+          <div class="scroll" aria-live="polite">
+            <div class="scroll-head">PLAYER STATS</div>
+            <div class="scroll-id">
+              <span class="scroll-face" aria-hidden="true"></span>
+              <span>NAME:<br /><b>YOU</b></span>
+            </div>
+            <div class="scroll-class">E-RANK ADVENTURER</div>
+            <div class="scroll-row">LEVEL: <b id="tLevel">10</b></div>
+            <div class="scroll-row">WEAPON: <b>LONGSWORD</b></div>
+            <div class="scroll-bar"><span>HP:</span><span class="bar bar-hp"><i id="tHpFill"></i><em id="tHp">122/130</em></span></div>
+            <div class="scroll-bar"><span>MP:</span><span class="bar bar-mp"><i id="tMpFill"></i><em id="tMp">28/34</em></span></div>
+            <div class="scroll-stats">
+              <span class="c-str">STR <b id="tSTR">14</b></span>
+              <span class="c-dex">DEX <b id="tDEX">8</b></span>
+              <span class="c-spd">SPD <b id="tSPD">10</b></span>
+              <span class="c-stm">STM <b id="tSTM">12</b></span>
+              <span class="c-int">INT <b id="tINT">8</b></span>
+              <span>STREAK <b id="tStreak">5</b></span>
+            </div>
+          </div>
+          <div class="train-hero">
+            <span class="spr hero-walk" id="trainHero" style="--row:0" aria-hidden="true"></span>
+            <div class="train-pops" id="trainPops" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="train-label">LOG A WORKOUT IN RESPAWN</div>
+        <div class="train-btns">
+          <button type="button" class="tbtn" style="--c:var(--str)" data-stat="STR">🏋 LIFT<small>+STR</small></button>
+          <button type="button" class="tbtn" style="--c:var(--dex)" data-stat="DEX">🧘 STRETCH<small>+DEX</small></button>
+          <button type="button" class="tbtn" style="--c:var(--spd)" data-stat="SPD">🏃 SPRINT<small>+SPD</small></button>
+          <button type="button" class="tbtn" style="--c:var(--stm)" data-stat="STM">❤ RUN<small>+STM</small></button>
+          <button type="button" class="tbtn" style="--c:var(--int)" data-stat="INT">📖 STUDY<small>+INT</small></button>
+        </div>
+
+        <div class="train-sliders">
+          <label><span><span>NUTRITION <b class="c-hpred">HP</b></span><output id="oFood">84%</output></span>
+            <input type="range" id="sFood" min="0" max="100" value="84" /></label>
+          <label><span><span>SLEEP <b class="c-mpblue">MP</b></span><output id="oSleep">81%</output></span>
+            <input type="range" id="sSleep" min="0" max="100" value="81" /></label>
+          <label><span><span>STEPS TODAY</span><output id="oSteps">9,200</output></span>
+            <input type="range" id="sSteps" min="0" max="16000" step="100" value="9200" /></label>
+        </div>
+
+        <div class="readout" aria-live="polite">
+          <div><span>ATTACK</span><b id="rAtk">28</b></div>
+          <div><span>MAX HP</span><b id="rHp">130</b></div>
+          <div><span>MAX MP</span><b id="rMp">34</b></div>
+          <div><span>SPELL</span><b id="rSpell">22</b></div>
+          <div><span>CRIT</span><b id="rCrit">10%</b></div>
+          <div><span>DODGE</span><b id="rDodge">8%</b></div>
+          <div><span>SWING</span><b id="rSwing">0.82s</b></div>
+          <div><span>DASH</span><b id="rDash">2.2s</b></div>
+        </div>
+
+        <ul class="effects" id="tEffects" aria-live="polite"></ul>
+        <button type="button" class="link-btn" id="trainReset">↺ RESET TO THE DEMO HERO</button>
+      </div>
+
+      <!-- Stat mapping -->
+      <div class="mapping" data-reveal>
+        <div class="map-row" style="--c:var(--str)"><b>STR</b><span>Attack, plus a little armor and health. Powers swords, axes and maces.</span></div>
+        <div class="map-row" style="--c:var(--dex)"><b>DEX</b><span>Critical hits, dodging and a faster dash. Powers daggers and bows.</span></div>
+        <div class="map-row" style="--c:var(--spd)"><b>SPD</b><span>Attack speed and movement speed. Powers the spear.</span></div>
+        <div class="map-row" style="--c:var(--stm)"><b>STM</b><span>Max health, armor, and shorter ability, spell and rune cooldowns.</span></div>
+        <div class="map-row" style="--c:var(--int)"><b>INT</b><span>Mana pool and spell power. Powers staves and runes.</span></div>
+        <div class="map-row" style="--c:#ef4444"><b>FOOD</b><span>How full you start. Well fed (80%+): +10% attack, faster healing.</span></div>
+        <div class="map-row" style="--c:#3b82f6"><b>SLEEP</b><span>Starting mana. Well rested (80%+): faster mana; exhausted spells cost 50% more.</span></div>
+        <div class="map-row" style="--c:var(--green)"><b>STEPS</b><span>8,000 today is Stride, 12,000 is Marathon: faster feet, quicker dashes.</span></div>
+        <div class="map-row" style="--c:var(--gold)"><b>STREAK</b><span>+2% coins a day (up to 30%). Seven days grants Second Wind.</span></div>
+        <div class="map-row" style="--c:#f97316"><b>TODAY</b><span>Trained today? You're Fired Up: every level starts with half an ultimate bar.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HERO MAKER ============ -->
+  <section class="section split" id="maker">
+    <div class="split-copy">
+      <span class="kicker">// HERO MAKER</span>
+      <h2 class="section-title left">MAKE IT LOOK LIKE YOU</h2>
+      <p class="lede left">
+        Take one selfie and the game reads it on the phone: skin tone, hair color
+        and style, facial hair and glasses. Then it draws your pixel hero from what
+        it saw. Every choice can be changed by hand.
+      </p>
+      <ul class="ticks">
+        <li><b>Never leaves the phone.</b> The photo is read on the device with Apple's Vision framework, then thrown away. It is never saved or sent anywhere.</li>
+        <li><b>Yours to tweak.</b> 10 skin tones, 10 hair styles, 17 hair colors, 5 kinds of facial hair, glasses on or off.</li>
+        <li><b>Dressed by the shop.</b> 24 pieces of armor, capes and trinkets show on your sprite.</li>
+      </ul>
+    </div>
+    <div class="maker-stage" data-reveal>
+      <div class="phone"><img src="screenshots/07-hero-maker.png" width="1320" height="2868" loading="lazy"
+           alt="The Hero Maker screen: the pixel hero and a close-up of its face above a MATCH MY LOOK card with a USE A SELFIE button, then skin and hair color swatches." /></div>
+    </div>
+    <div class="lineup" data-reveal aria-label="Eight different heroes made in the Hero Maker">
+      <button type="button" class="lineup-hero" style="--row:0" aria-label="Hero in a traveler's tunic with a longsword"><span class="spr hero-walk" style="--row:0"></span></button>
+      <button type="button" class="lineup-hero" style="--row:1" aria-label="Hero with curly hair and a beard, in plate with a red cape and a greatsword"><span class="spr hero-walk" style="--row:1"></span></button>
+      <button type="button" class="lineup-hero" style="--row:2" aria-label="Hero with long blonde hair and glasses, in a mystic robe with an archstaff"><span class="spr hero-walk" style="--row:2"></span></button>
+      <button type="button" class="lineup-hero" style="--row:3" aria-label="Hero with a bun, in ranger leathers and a cloak with an elven bow"><span class="spr hero-walk" style="--row:3"></span></button>
+      <button type="button" class="lineup-hero" style="--row:4" aria-label="Hero with a buzz cut and goatee, in dragonscale with a phoenix cape and a battle axe"><span class="spr hero-walk" style="--row:4"></span></button>
+      <button type="button" class="lineup-hero" style="--row:5" aria-label="Hero with wavy red hair, in chainmail and a royal mantle with a holy mace"><span class="spr hero-walk" style="--row:5"></span></button>
+      <button type="button" class="lineup-hero" style="--row:6" aria-label="Hero with spiky pink hair, in shadow garb with shadowfang daggers"><span class="spr hero-walk" style="--row:6"></span></button>
+      <button type="button" class="lineup-hero" style="--row:7" aria-label="Hero with a mustache and glasses, in celestial armor and a crown with a halberd"><span class="spr hero-walk" style="--row:7"></span></button>
+      <p class="lineup-cap">Eight heroes, all made in the Hero Maker. Tap one to swing.</p>
+    </div>
+  </section>
+
+  <!-- ============ CLASSES ============ -->
+  <section class="section" id="classes">
+    <div class="section-head">
+      <span class="kicker">// CLASS WEAPONS</span>
+      <h2 class="section-title">EVERY CLASS FIGHTS ITS OWN WAY</h2>
+      <p class="lede">
+        Respawn reads the shape of your training and gives you a class. Here, that
+        class picks your weapon, the stat that powers it, one class ability and
+        one ultimate. Hover or tap a hero to see the swing.
+      </p>
+    </div>
+
+    <div class="class-grid">
+      <button type="button" class="class-card" style="--row:0;--c:var(--str)" data-reveal><span class="spr cls"></span><b>WARRIOR</b><span class="cw">Greatsword</span><span class="cd">Slow, huge sweeping slash</span><span class="cs">STR · Earthsplitter</span></button>
+      <button type="button" class="class-card" style="--row:1;--c:var(--str)" data-reveal><span class="spr cls"></span><b>KNIGHT</b><span class="cw">Sword &amp; Shield</span><span class="cd">Steady slash; the shield blocks 1 hit in 5</span><span class="cs">STR · Bulwark</span></button>
+      <button type="button" class="class-card" style="--row:2;--c:var(--str)" data-reveal><span class="spr cls"></span><b>CHAMPION</b><span class="cw">Battle Axe</span><span class="cd">Heavy chop with a stunning shockwave</span><span class="cs">STR · Titan Rush</span></button>
+      <button type="button" class="class-card" style="--row:3;--c:var(--str)" data-reveal><span class="spr cls"></span><b>PALADIN</b><span class="cw">Holy Mace</span><span class="cd">Smites that heal you a little</span><span class="cs">STR · Divine Judgment</span></button>
+      <button type="button" class="class-card" style="--row:4;--c:var(--str)" data-reveal><span class="spr cls"></span><b>ADVENTURER</b><span class="cw">Longsword</span><span class="cd">A balanced slash</span><span class="cs">STR · Heroic Strike</span></button>
+      <button type="button" class="class-card" style="--row:5;--c:var(--dex)" data-reveal><span class="spr cls"></span><b>ROGUE</b><span class="cw">Twin Daggers</span><span class="cd">Twice as fast, short reach, extra crit</span><span class="cs">DEX · Shadow Dance</span></button>
+      <button type="button" class="class-card" style="--row:6;--c:var(--dex)" data-reveal><span class="spr cls"></span><b>RANGER</b><span class="cw">Longbow</span><span class="cd">Long-range arrows piercing 3 enemies</span><span class="cs">DEX · Arrow Storm</span></button>
+      <button type="button" class="class-card" style="--row:7;--c:var(--int)" data-reveal><span class="spr cls"></span><b>SCHOLAR</b><span class="cw">Arcane Staff</span><span class="cd">Homing magic missiles that burst</span><span class="cs">INT · Meteor</span></button>
+      <button type="button" class="class-card" style="--row:8;--c:var(--stm)" data-reveal><span class="spr cls"></span><b>MONK</b><span class="cw">Quarterstaff</span><span class="cd">A 360° spin</span><span class="cs">DEX + STM · Hundred Fists</span></button>
+      <button type="button" class="class-card" style="--row:9;--c:var(--spd)" data-reveal><span class="spr cls"></span><b>ATHLETE</b><span class="cw">Spear</span><span class="cd">A long thrust through a whole line</span><span class="cs">SPD · Second Gear</span></button>
+      <button type="button" class="class-card" style="--row:10;--c:#9ca3af" data-reveal><span class="spr cls"></span><b>UNRANKED</b><span class="cw">Wooden Stick</span><span class="cd">A basic swing, until you train</span><span class="cs">STR · Limit Break</span></button>
+    </div>
+
+    <div class="shop" data-reveal>
+      <div class="shop-head">
+        <div>
+          <span class="kicker">// WEAPON SHOP</span>
+          <h3 class="sub-title">31 WEAPONS · 10 FAMILIES</h3>
+          <p class="lede left">Buy with coins you win in fights. Any class can wield anything, and your own class's family gets <b class="c-gold">Class Mastery: +20% power</b>.</p>
+        </div>
+      </div>
+      <div class="shelf">
+        <div class="item" style="--row:0"><span class="spr shopspr"></span><b>KATANA</b><span class="tag">+8% CRIT</span><dl><dt>DMG</dt><dd><i style="width:53%"></i></dd><dt>SPD</dt><dd><i style="width:50%"></i></dd><dt>REACH</dt><dd><i style="width:55%"></i></dd></dl></div>
+        <div class="item" style="--row:1"><span class="spr shopspr"></span><b>DRAGONSLAYER</b><span class="tag">WIDE SWEEP</span><dl><dt>DMG</dt><dd><i style="width:100%"></i></dd><dt>SPD</dt><dd><i style="width:26%"></i></dd><dt>REACH</dt><dd><i style="width:74%"></i></dd></dl></div>
+        <div class="item" style="--row:2"><span class="spr shopspr"></span><b>TOWER SHIELD</b><span class="tag">BLOCKS 32%</span><dl><dt>DMG</dt><dd><i style="width:58%"></i></dd><dt>SPD</dt><dd><i style="width:36%"></i></dd><dt>REACH</dt><dd><i style="width:53%"></i></dd></dl></div>
+        <div class="item" style="--row:3"><span class="spr shopspr"></span><b>EXECUTIONER</b><span class="tag">STUN · SHOCKWAVE</span><dl><dt>DMG</dt><dd><i style="width:98%"></i></dd><dt>SPD</dt><dd><i style="width:24%"></i></dd><dt>REACH</dt><dd><i style="width:63%"></i></dd></dl></div>
+        <div class="item" style="--row:4"><span class="spr shopspr"></span><b>SUNHAMMER</b><span class="tag">HEALS ON HIT</span><dl><dt>DMG</dt><dd><i style="width:83%"></i></dd><dt>SPD</dt><dd><i style="width:31%"></i></dd><dt>REACH</dt><dd><i style="width:58%"></i></dd></dl></div>
+        <div class="item" style="--row:5"><span class="spr shopspr"></span><b>SHADOWFANGS</b><span class="tag">+20% CRIT</span><dl><dt>DMG</dt><dd><i style="width:36%"></i></dd><dt>SPD</dt><dd><i style="width:100%"></i></dd><dt>REACH</dt><dd><i style="width:45%"></i></dd></dl></div>
+        <div class="item" style="--row:6"><span class="spr shopspr"></span><b>ELVEN BOW</b><span class="tag">PIERCES 4</span><dl><dt>DMG</dt><dd><i style="width:50%"></i></dd><dt>SPD</dt><dd><i style="width:44%"></i></dd><dt>REACH</dt><dd><i style="width:100%"></i></dd></dl></div>
+        <div class="item" style="--row:7"><span class="spr shopspr"></span><b>ARCHSTAFF</b><span class="tag">HOMING · BURST</span><dl><dt>DMG</dt><dd><i style="width:60%"></i></dd><dt>SPD</dt><dd><i style="width:36%"></i></dd><dt>REACH</dt><dd><i style="width:100%"></i></dd></dl></div>
+        <div class="item" style="--row:8"><span class="spr shopspr"></span><b>HALBERD</b><span class="tag">PIERCING THRUST</span><dl><dt>DMG</dt><dd><i style="width:68%"></i></dd><dt>SPD</dt><dd><i style="width:36%"></i></dd><dt>REACH</dt><dd><i style="width:100%"></i></dd></dl></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORLDS ============ -->
+  <section class="section" id="worlds">
+    <div class="section-head">
+      <span class="kicker">// ADVENTURE MAP</span>
+      <h2 class="section-title">SIX WORLDS, 30 LEVELS</h2>
+      <p class="lede">
+        Every level is made by hand, and each world teaches one new idea. The first
+        level introduces it safely, the next develops it, the third twists it, the
+        fourth mixes it with what came before, and the boss is built around it.
+        Clear a level to open the next, and go back for all three stars.
+      </p>
+    </div>
+
+    <div class="world-grid">
+      <article class="world" style="--w:#f87171;--w2:#57534e" data-reveal>
+        <header><span>WORLD 1</span><h3>STONE HALLS</h3></header>
+        <div class="world-boss"><span class="spr boss" style="--row:0"></span></div>
+        <div class="world-idea">POWDER KEGS</div>
+        <p>Hit one to burst it and hurt every monster close by. Stand too close and it hurts you too, but dashing through the blast is a perfect dodge.</p>
+        <ol class="world-levels"><li>First Steps</li><li>Bat Roost</li><li>Slime Pit</li><li>The Long Hall</li><li class="b">Iron Warden</li></ol>
+      </article>
+      <article class="world" style="--w:#65a30d;--w2:#14532d" data-reveal>
+        <header><span>WORLD 2</span><h3>MOSSY CRYPT</h3></header>
+        <div class="world-boss"><span class="spr boss" style="--row:1"></span></div>
+        <div class="world-idea">SPIKE TRAPS &amp; NESTS</div>
+        <p>Spikes rise on a beat and hurt anyone on them, monsters included, so luring skeletons over them is a skill. Nests keep hatching until you smash them.</p>
+        <ol class="world-levels"><li>Crypt Gate</li><li>Spore Garden</li><li>Bone Yard</li><li>Sunken Altar</li><li class="b">Skeleton Mage</li></ol>
+      </article>
+      <article class="world" style="--w:#d97706;--w2:#44403c" data-reveal>
+        <header><span>WORLD 3</span><h3>OLD MINES</h3></header>
+        <div class="world-boss"><span class="spr boss" style="--row:2"></span></div>
+        <div class="world-idea">FIRE BARS</div>
+        <p>Links of flame sweep around an iron brazier, burning heroes and monsters alike. The Golem telegraphs its slam, so watch the ground.</p>
+        <ol class="world-levels"><li>Mine Shaft</li><li>Watchers</li><li>Orc Camp</li><li>Collapsed Tunnel</li><li class="b">Stone Golem</li></ol>
+      </article>
+      <article class="world" style="--w:#38bdf8;--w2:#1e3a5f" data-reveal>
+        <header><span>WORLD 4</span><h3>FROST VAULT</h3></header>
+        <div class="world-boss"><span class="spr boss" style="--row:3"></span></div>
+        <div class="world-idea">ELITES &amp; SHRINES</div>
+        <p>Elites glow and carry one trait: BRUISER, SWIFT, VOLATILE or SPLITTER. A shrine heals whoever stands at it, once. Ghosts pass right through pillars.</p>
+        <ol class="world-levels"><li>Cold Door</li><li>Haunted Hall</li><li>Ember Vents</li><li>Ice Throne Road</li><li class="b">Frost Wraith</li></ol>
+      </article>
+      <article class="world" style="--w:#fb7185;--w2:#450a0a" data-reveal>
+        <header><span>WORLD 5</span><h3>DRAGON'S KEEP</h3></header>
+        <div class="world-boss"><span class="spr boss" style="--row:4"></span></div>
+        <div class="world-idea">EVERYTHING TOGETHER</div>
+        <p>Every idea from the first four worlds, combined, over glowing lava fissures. At the top of the Burning Stair, the Crimson Dragon rears back to breathe.</p>
+        <ol class="world-levels"><li>Keep Gate</li><li>Ash Courtyard</li><li>Burning Stair</li><li>Hoard Vault</li><li class="b">Crimson Dragon</li></ol>
+      </article>
+      <article class="world" style="--w:#a78bfa;--w2:#1f3a3a" data-reveal>
+        <header><span>WORLD 6</span><h3>DREAMING FEN</h3></header>
+        <div class="world-boss"><span class="spr boss" style="--row:5"></span></div>
+        <div class="world-idea">CONDITIONS</div>
+        <p>Moths throw sleep dust, ghosts chill, sporecaps poison, imps burn. Moonwells wash it all off. Lure a crowd into a dream lily and hit them while they sleep.</p>
+        <ol class="world-levels"><li>Fen Edge</li><li>Moth Hollow</li><li>Sleepwalk</li><li>Lantern Watch</li><li class="b">The Moth Queen</li></ol>
+      </article>
+    </div>
+
+    <div class="objectives" data-reveal>
+      <div class="obj-title">MORE THAN "BEAT EVERY WAVE"</div>
+      <div class="obj"><b>SURVIVE</b><span>Monsters keep coming until the timer runs out.</span></div>
+      <div class="obj"><b>PROTECT THE CRYSTAL</b><span>Raiders go for it. If it shatters, the level is lost.</span></div>
+      <div class="obj"><b>HOLD THE CIRCLE</b><span>Stand in it to fill it. Friends fill it faster.</span></div>
+      <div class="obj"><b>DESTROY THE NESTS</b><span>Smash every nest before it hatches a crowd.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ BOSS FIGHT ============ -->
+  <section class="section" id="bosses">
+    <div class="section-head">
+      <span class="kicker">// BOSS FIGHT</span>
+      <h2 class="section-title">TEN BOSSES. TRY ONE.</h2>
+      <p class="lede">
+        Each boss is painted in code, about three times the hero's height, with its
+        own idle loop and wind-up pose. Below 35% health it <b class="c-red">enrages</b>
+        and turns up the pressure. Pick one and fight it. Your attack comes from the
+        training table above, so train first and hit harder.
+      </p>
+    </div>
+
+    <div class="arena-wrap">
+      <div class="roster" id="roster" role="radiogroup" aria-label="Choose a boss">
+        <!-- filled by script.js -->
+      </div>
+
+      <div class="arena panel" id="arena" data-reveal>
+        <div class="arena-top">
+          <div class="arena-name" id="bossName">CRIMSON DRAGON</div>
+          <div class="hpbar boss-hp"><i id="bossHpFill"></i><em id="bossHp">1,170/1,170</em></div>
+        </div>
+
+        <div class="arena-stage" id="arenaStage">
+          <div class="arena-hero">
+            <span class="spr hero-walk" id="arenaHero" style="--row:0" aria-hidden="true"></span>
+            <span class="warn" id="warn" aria-hidden="true">!</span>
+          </div>
+          <div class="vs" aria-hidden="true">VS.</div>
+          <div class="arena-boss">
+            <span class="spr boss" id="arenaBoss" style="--row:4" aria-hidden="true"></span>
+          </div>
+          <div class="pops" id="pops" aria-hidden="true"></div>
+          <div class="cutin" id="cutin" aria-hidden="true">
+            <span class="cutin-face"></span>
+            <span class="cutin-text"><small>ULTIMATE</small>HEROIC STRIKE</span>
+          </div>
+          <div class="arena-banner" id="arenaBanner" aria-hidden="true"></div>
+        </div>
+
+        <div class="vs-card"><span>YOU</span><span>LV <b id="aLv">10</b></span><span>HP <b id="aHp">122</b></span><span>ATK <b id="aAtk">28</b></span></div>
+
+        <div class="arena-hud">
+          <div class="hud-row"><span>HP</span><span class="hpbar hero-hp"><i id="heroHpFill"></i></span><b id="heroHp">122</b></div>
+          <div class="hud-row"><span>ULT</span><span class="hpbar ult"><i id="ultFill"></i></span><b id="ultPct">0%</b></div>
+          <div class="hud-row combo" id="combo" aria-hidden="true">×<b id="comboN">0</b> COMBO</div>
+        </div>
+
+        <div class="arena-ctl">
+          <button type="button" class="btn btn-red btn-wide" id="fightBtn">FIGHT</button>
+          <div class="ctl-row" id="ctlRow" hidden>
+            <button type="button" class="btn btn-ctl" id="strikeBtn">STRIKE <small>J</small></button>
+            <button type="button" class="btn btn-ctl btn-dash" id="dashBtn">DASH <small>K</small></button>
+            <button type="button" class="btn btn-ctl btn-ult" id="ultBtn" disabled>ULTIMATE <small>L</small></button>
+          </div>
+        </div>
+        <p class="arena-log" id="arenaLog" aria-live="polite">Pick a boss, then press FIGHT.</p>
+      </div>
+    </div>
+    <p class="arena-lore" id="bossLore" aria-live="polite"></p>
+  </section>
+
+  <!-- ============ COMBAT ============ -->
+  <section class="section split reverse" id="combat">
+    <div class="split-copy">
+      <span class="kicker">// ARCADE COMBAT</span>
+      <h2 class="section-title left">EASY TO PICK UP. HARD TO PUT DOWN.</h2>
+      <p class="lede left">
+        Move with the stick and your hero attacks on their own. Your thumbs are free
+        for the good part: dashing through danger, casting spells, and timing your
+        class ability.
+      </p>
+      <ul class="ticks">
+        <li><b>Perfect dodges.</b> Dash through an attack and take no damage, plus a free crit and extra ultimate charge.</li>
+        <li><b>Combos.</b> Every 5 hits in a row adds 1% damage, up to 20%. A heavy hit cuts it in half.</li>
+        <li><b>Fair fights.</b> Armed enemies show a red warning before every swing, shields block from the front, and nobody hits you through a pillar.</li>
+        <li><b>Sideways or upright.</b> Fights turn into a wide arena with console-style controls. Prefer portrait? One switch in Settings.</li>
+        <li><b>Training Grounds.</b> A guided level teaches every move by having you do it. You can't lose, and the first finish pays 100 coins.</li>
+      </ul>
+    </div>
+    <div class="combat-stage" data-reveal>
+      <div class="phone"><img src="screenshots/04-ultimate.png" width="1320" height="2868" loading="lazy"
+           alt="A fight in the Mossy Crypt: a cyan cut-in banner with the hero's face reads ULTIMATE, HEROIC STRIKE, over the arena, with the stick and the SPELL, RALLY, HEAL and DASH buttons below." /></div>
+    </div>
+  </section>
+
+  <!-- ============ ULTIMATES ============ -->
+  <section class="section" id="ultimates">
+    <div class="section-head">
+      <span class="kicker">// SUPER METER</span>
+      <h2 class="section-title">ULTIMATES THAT HIT LIKE ULTIMATES</h2>
+      <p class="lede">
+        The arena freezes for a fighting-game cut-in with your hero's face, then the
+        move lands: a white flash, a punch of zoom, a cracked floor and a deep boom.
+        The meter holds three bars. Fire now, or hold on for something bigger.
+      </p>
+    </div>
+
+    <div class="meter" data-reveal>
+      <div class="meter-bar"><i class="m1"></i><i class="m2"></i><i class="m3"></i></div>
+      <div class="meter-tiers">
+        <div><b>I</b><span>1 bar</span><em>The move</em></div>
+        <div><b>II</b><span>2 bars</span><em>EMPOWERED ×1.6</em></div>
+        <div><b>III</b><span>3 bars</span><em>LEGENDARY ×2.4 + a finale across the arena</em></div>
+      </div>
+      <p class="meter-note">At a quarter health or less, it goes <b class="c-red">CRITICAL</b>: stronger, with a red cut-in.</p>
+    </div>
+
+    <div class="ult-grid">
+      <div class="ult" style="--c:#ef4444" data-reveal><b>EARTHSPLITTER</b><span>Smash the ground: 400% to everything nearby, and stun them.</span></div>
+      <div class="ult" style="--c:#3b82f6" data-reveal><b>BULWARK</b><span>Invulnerable for 5 seconds, reflecting every shot back.</span></div>
+      <div class="ult" style="--c:#f97316" data-reveal><b>TITAN RUSH</b><span>Charge through up to 3 enemies, crushing all in your path.</span></div>
+      <div class="ult" style="--c:#22c55e" data-reveal><b>ARROW STORM</b><span>Rain arrows on every enemy for 4 seconds.</span></div>
+      <div class="ult" style="--c:#a855f7" data-reveal><b>SHADOW DANCE</b><span>Blink between up to 6 enemies, critting each one.</span></div>
+      <div class="ult" style="--c:#14b8a6" data-reveal><b>HUNDRED FISTS</b><span>A storm of blows around you for 3 seconds, and heal 30%.</span></div>
+      <div class="ult" style="--c:#818cf8" data-reveal><b>METEOR</b><span>Call down a meteor on the biggest crowd for huge spell damage.</span></div>
+      <div class="ult" style="--c:#facc15" data-reveal><b>DIVINE JUDGMENT</b><span>Holy light strikes every enemy and heals you 50%.</span></div>
+      <div class="ult" style="--c:#ec4899" data-reveal><b>SECOND GEAR</b><span>6 seconds of blinding speed: untouchable, attacking nonstop.</span></div>
+      <div class="ult" style="--c:#06b6d4" data-reveal><b>HEROIC STRIKE</b><span>Strike every enemy, heal 25%, and earn bonus coins for a while.</span></div>
+      <div class="ult" style="--c:#c4b5fd" data-reveal><b>DREAM ECLIPSE</b><span>Night falls: every enemy sleeps for 3 seconds and takes 50% more while asleep.</span></div>
+    </div>
+    <p class="center-note">Your class's ultimate is always yours. Learn any other by finishing 3 of its kind of Respawn daily quest, or by beating a world's boss.</p>
+
+    <div class="quests panel" data-reveal>
+      <div class="quests-copy">
+        <span class="kicker">// RESPAWN'S DAILY QUESTS</span>
+        <h3 class="sub-title">QUESTS CHARGE YOUR ULTIMATE</h3>
+        <p>Each daily quest you finish in Respawn does two things here. It lights an <b class="c-gold">Ember</b> (up to three) that starts a solo fight with a full bar, and never goes out. And it adds an <b>infusion</b> to every ultimate you fire today. Finish all seven for a <b class="c-gold">PERFECT DAY</b>: the meter fills 25% faster.</p>
+      </div>
+      <ul class="infusions">
+        <li style="--c:#ef4444"><span>STR · Strength reps</span><b>POWER</b><em>Ultimates hit 25% harder.</em></li>
+        <li style="--c:#a855f7"><span>DEX · Mobility hold</span><b>PRECISION</b><em>Every ultimate hit is a critical.</em></li>
+        <li style="--c:#ec4899"><span>SPD · Speed workout</span><b>HASTE</b><em>Sprint for 4 seconds after.</em></li>
+        <li style="--c:#14b8a6"><span>STM · Stamina workout</span><b>ENDURANCE</b><em>A shield for 4 seconds after.</em></li>
+        <li style="--c:#818cf8"><span>INT · Daily quiz</span><b>INSIGHT</b><em>Get a quarter of a bar back.</em></li>
+        <li style="--c:#22c55e"><span>HP · Log your meals</span><b>NOURISH</b><em>Each ultimate heals 20%.</em></li>
+        <li style="--c:#60a5fa"><span>MP · Sleep 7 hours</span><b>DREAM</b><em>Enemies sleep for 1.5 seconds.</em></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ RUNES ============ -->
+  <section class="section" id="runes">
+    <div class="section-head">
+      <span class="kicker">// RUNE CASTING</span>
+      <h2 class="section-title">DRAW TO CAST</h2>
+      <p class="lede">
+        Draw a shape on the arena and it becomes a spell, paid for with MP and powered
+        by INT. Draw on the board below. It uses the same shape rules as the game.
+      </p>
+    </div>
+
+    <div class="rune-wrap">
+      <div class="rune-list">
+        <button type="button" class="rune" style="--c:#a78bfa" data-rune="lance">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 32L34 8"/></svg>
+          <span><b>ARCANE LANCE</b><small>Swipe a straight line · 8 MP</small><em>A piercing lance from your hero along the swipe.</em></span>
+        </button>
+        <button type="button" class="rune" style="--c:#fde047" data-rune="lightning">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26L14 10L22 30L30 12L36 24"/></svg>
+          <span><b>CHAIN LIGHTNING</b><small>Draw a zigzag · 14 MP</small><em>Lightning that jumps from enemy to enemy.</em></span>
+        </button>
+        <button type="button" class="rune" style="--c:#fb923c" data-rune="flame">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5L35 33H5Z"/></svg>
+          <span><b>FLAME RUNE</b><small>Draw a triangle · 12 MP</small><em>A fire blast exactly where you drew it.</em></span>
+        </button>
+        <button type="button" class="rune" style="--c:#60a5fa" data-rune="ward">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14"/></svg>
+          <span><b>WARD</b><small>Draw a circle · 10 MP</small><em>Pushes enemies off and soaks damage.</em></span>
+        </button>
+        <p class="rune-hint">Tap a rune to watch it drawn for you.</p>
+      </div>
+
+      <div class="rune-board panel" data-reveal>
+        <div class="rune-hud">
+          <span>MP</span><span class="hpbar mp"><i id="runeMpFill"></i></span><b id="runeMp">34/34</b>
+        </div>
+        <div class="rune-canvas-wrap">
+          <canvas id="runeCanvas" width="640" height="420" role="img"
+                  aria-label="A small arena with your hero and some monsters. Draw a line, zigzag, triangle or circle on it to cast a rune."></canvas>
+          <div class="rune-result" id="runeResult" aria-live="polite">DRAW HERE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DAILY RIFT ============ -->
+  <section class="section" id="rift">
+    <div class="section-head">
+      <span class="kicker">// THE LIVING DUNGEON</span>
+      <h2 class="section-title">THE DAILY RIFT</h2>
+      <p class="lede">
+        A new level every day, shaped by how you actually lived it. Sleep badly and it's
+        pitch dark beyond your torch. Walk 8,000 steps and you're faster. Log your meals
+        and monsters drop food. Every rift also gets one random twist. Set your day and
+        watch today's rift change.
+      </p>
+    </div>
+
+    <div class="rift-wrap">
+      <div class="panel day" data-reveal>
+        <div class="panel-title">YOUR DAY <small>from Respawn</small></div>
+        <label class="field"><span>LAST NIGHT'S SLEEP <output id="oRSleep">45%</output></span>
+          <input type="range" id="rSleep" min="0" max="100" value="45" /></label>
+        <label class="field"><span>STEPS TODAY <output id="oRSteps">9,200</output></span>
+          <input type="range" id="rSteps" min="0" max="16000" step="100" value="9200" /></label>
+        <label class="field"><span>MEALS LOGGED <output id="oRMeals">3</output></span>
+          <input type="range" id="rMeals" min="0" max="5" value="3" /></label>
+        <label class="field"><span>STREAK <output id="oRStreak">5 days</output></span>
+          <input type="range" id="rStreak" min="0" max="30" value="5" /></label>
+        <label class="toggle"><input type="checkbox" id="rTrained" checked /><span>TRAINED TODAY</span></label>
+      </div>
+
+      <div class="rift-card" data-reveal>
+        <div class="rift-head"><b>DAILY RIFT</b><span id="riftClock">NEW IN --H --M</span></div>
+        <div class="rift-banner" id="riftBanner"><span id="riftName">RIFT OF THE MOSSY CRYPT</span></div>
+        <div class="rift-sub">SHAPED BY YOUR DAY</div>
+        <ul class="rift-mods" id="riftMods" aria-live="polite"></ul>
+        <div class="rift-foot"><span>COIN BONUS</span><b id="riftCoins">×1.75</b></div>
+        <p class="rift-note">This is <b>today's real rift</b>: the same world and twist the game builds for every player today. Tomorrow brings a new one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RAIDS + REP POWER ============ -->
+  <section class="section" id="raids">
+    <div class="duo">
+      <div class="panel raid" data-reveal>
+        <span class="kicker">// TRAINING RAIDS</span>
+        <h3 class="sub-title">YOUR WEEK HITS THE BOSS</h3>
+        <p>Every week brings a world boss with a <b>10,000 HP</b> pool. Every XP you earn in Respawn that week hits it for 2. Then you finish what's left in the arena, where even a lost fight's hits stick.</p>
+        <div class="raid-box">
+          <span class="spr boss" id="raidBoss" style="--row:0" aria-hidden="true"></span>
+          <div class="raid-info">
+            <div class="raid-name"><span id="raidName">IRON WARDEN</span> <small>(RAID)</small></div>
+            <div class="hpbar raid-hp"><i id="raidFill"></i><em id="raidHp">10,000/10,000</em></div>
+            <ol class="raid-days" id="raidDays">
+              <li data-xp="820">MON <b>+820 XP</b></li>
+              <li data-xp="640">TUE <b>+640 XP</b></li>
+              <li data-xp="0">WED <b>REST DAY</b></li>
+              <li data-xp="910">THU <b>+910 XP</b></li>
+              <li data-xp="450">FRI <b>+450 XP</b></li>
+              <li data-xp="1200">SAT <b>+1,200 XP</b></li>
+            </ol>
+            <div class="raid-end" id="raidEnd">A sample week of training. This week's raid boss is real.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel reps" data-reveal>
+        <span class="kicker">// REP POWER</span>
+        <h3 class="sub-title">SQUAT FOR YOUR SUPER</h3>
+        <p>Prop the phone up and do 10 squats or 20 jumping jacks in front of the camera. Each rep charges your next fight's ultimate, and a full set adds <b>10% damage</b>. Body tracking runs on the phone: nothing is recorded or sent.</p>
+        <div class="rep-box">
+          <svg class="rep-fig" id="repFig" viewBox="0 0 120 160" aria-hidden="true">
+            <g class="rep-body">
+              <line x1="60" y1="34" x2="60" y2="78" /><!-- spine -->
+              <line x1="60" y1="44" x2="34" y2="62" /><line x1="60" y1="44" x2="86" y2="62" /><!-- arms -->
+              <line class="thigh l" x1="60" y1="78" x2="46" y2="112" /><line class="thigh r" x1="60" y1="78" x2="74" y2="112" />
+              <line class="shin l" x1="46" y1="112" x2="46" y2="148" /><line class="shin r" x1="74" y1="112" x2="74" y2="148" />
+              <circle cx="60" cy="22" r="10" class="head" />
+              <circle cx="60" cy="44" r="3" /><circle cx="60" cy="78" r="3" /><circle cx="34" cy="62" r="3" /><circle cx="86" cy="62" r="3" />
+              <circle cx="46" cy="112" r="3" /><circle cx="74" cy="112" r="3" /><circle cx="46" cy="148" r="3" /><circle cx="74" cy="148" r="3" />
+            </g>
+          </svg>
+          <div class="rep-info">
+            <div class="rep-count"><b id="repN">0</b>/10 <small>SQUATS</small></div>
+            <div class="rep-depth"><i id="repDepth"></i></div>
+            <div class="rep-label">ULTIMATE CHARGE</div>
+            <div class="hpbar ult"><i id="repUlt"></i></div>
+            <div class="rep-say" id="repSay">"STEP BACK: SHOW YOUR KNEES"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CO-OP ============ -->
+  <section class="section" id="coop">
+    <div class="section-head">
+      <span class="kicker">// PLAY TOGETHER</span>
+      <h2 class="section-title">FOUR HEROES. ONE ARENA.</h2>
+      <p class="lede">
+        Live co-op for up to four players, each on their own phone with their own hero
+        and weapon. Newer heroes fighting beside stronger friends get a party boost,
+        so everyone matters.
+      </p>
+    </div>
+
+    <div class="split coop-split">
+      <div class="room panel" id="room" data-reveal>
+        <div class="room-head"><span>ROOM</span><b class="room-code" aria-label="Room code Q X 7 K 2 M">QX7K2M</b></div>
+        <div class="room-status" id="roomStatus" aria-live="polite">Waiting for friends to join…</div>
+        <ul class="room-list">
+          <li class="on in"><i class="shape">◆</i><span class="spr cls" style="--row:4"></span><span><b>YOU</b><small>HOST · LV 10 ADVENTURER</small></span><em>READY</em></li>
+          <li data-step="1"><i class="shape">●</i><span class="spr cls" style="--row:6"></span><span><b>ANA</b><small>LV 14 RANGER</small></span><em>READY</em></li>
+          <li data-step="2"><i class="shape">▲</i><span class="spr cls" style="--row:1"></span><span><b>KAI</b><small>LV 7 KNIGHT · PARTY BOOST</small></span><em>READY</em></li>
+          <li data-step="3"><i class="shape">■</i><span class="spr cls" style="--row:7"></span><span><b>JO</b><small>LV 19 SCHOLAR</small></span><em>READY</em></li>
+        </ul>
+        <div class="btn btn-gold btn-wide room-start" id="roomStart" aria-disabled="true">START</div>
+      </div>
+
+      <div class="split-copy">
+        <div class="ways">
+          <div><b>INVITE FRIENDS</b><span>Through Game Center.</span></div>
+          <div><b>QUICK MATCH</b><span>With strangers who want a fight.</span></div>
+          <div><b>ROOM CODE</b><span>Share 6 characters, or a link that opens the game in the room.</span></div>
+          <div><b>NEARBY</b><span>Phones in the same room find each other. No internet needed.</span></div>
+        </div>
+        <ul class="ticks">
+          <li><b>Revives.</b> Stand over a downed friend for 1.5 seconds to pick them up.</li>
+          <li><b>Team combos.</b> Two ultimates within 2 seconds set off one huge blast.</li>
+          <li><b>The bond.</b> Fight close together for +10% damage, shown as a gold thread.</li>
+          <li><b>Focus fire.</b> Each extra hero on the same monster adds 8%, and a CHAIN ×n pops up.</li>
+          <li><b>Pings and emotes.</b> Mark a target, or send NICE!, HELP! and GG!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="raids3">
+      <div class="raid3" data-reveal>
+        <div class="raid3-art"><span class="spr boss" style="--row:6"></span><span class="spr boss" style="--row:7"></span></div>
+        <b>TWIN SENTINELS</b>
+        <p>Fell Sol or Luna and the other raises them in 6 seconds. Finish both together.</p>
+      </div>
+      <div class="raid3" data-reveal>
+        <div class="raid3-art"><span class="spr boss" style="--row:8"></span></div>
+        <b>THE HOLLOW KING</b>
+        <p>Marks a hero with Doom, and everyone standing with that hero shares the hit. Huddle up.</p>
+      </div>
+      <div class="raid3" data-reveal>
+        <div class="raid3-art"><span class="spr boss" style="--row:9"></span></div>
+        <b>STORM TITAN</b>
+        <p>Static rings form around every hero, so spread out. Then the eye of the storm needs two heroes inside it.</p>
+      </div>
+    </div>
+    <p class="center-note">Co-op raids grow with the party. Guilds of up to 30 share a weekly raid boss that every member's training wears down, and everyone gets the chest.</p>
+  </section>
+
+  <!-- ============ FAIR PLAY ============ -->
+  <section class="section" id="fair">
+    <div class="section-head">
+      <span class="kicker">// HOUSE RULES</span>
+      <h2 class="section-title">NO ADS. NO PAY-TO-WIN.</h2>
+    </div>
+    <div class="fair-grid">
+      <div class="fair" data-reveal><span class="fair-ic">🪙</span><b>COINS ARE EARNED</b><p>There are no in-app purchases and no ads. Every coin comes from a fight, and coins buy gear, never power you could get by training.</p></div>
+      <div class="fair" data-reveal><span class="fair-ic">📖</span><b>READ-ONLY SYNC</b><p>The game reads your Respawn stats and never writes to them. A check runs on every build to keep it that way.</p></div>
+      <div class="fair" data-reveal><span class="fair-ic">📷</span><b>CAMERA STAYS LOCAL</b><p>The selfie reader and Rep Power both run on the phone. Nothing is recorded, saved or uploaded.</p></div>
+      <div class="fair" data-reveal><span class="fair-ic">🎮</span><b>TRY IT FIRST</b><p>Sign in with the account you use in Respawn, or play everything with a demo hero.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section gallery-section" id="gallery" aria-label="Screenshots">
+    <div class="section-head">
+      <span class="kicker">// SCREENSHOTS</span>
+      <h2 class="section-title">ON YOUR PHONE</h2>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="Screenshots, scroll sideways">
+      <figure><img src="screenshots/01-versus-dragon.png" width="1320" height="2868" loading="lazy" alt="VS screen: the hero faces the Crimson Dragon, with FIGHT and NOT YET buttons." /></figure>
+      <figure><img src="screenshots/02-boss-frost-wraith.png" width="1320" height="2868" loading="lazy" alt="Fighting the Frost Wraith in an icy arena with a combo counter." /></figure>
+      <figure><img src="screenshots/03-boss-iron-warden.png" width="1320" height="2868" loading="lazy" alt="Fighting the Iron Warden in the Stone Halls." /></figure>
+      <figure><img src="screenshots/05-your-hero-is-you.png" width="1320" height="2868" loading="lazy" alt="Intro page: YOUR HERO IS YOU, with the player stats scroll beside the pixel hero." /></figure>
+      <figure><img src="screenshots/06-hero-stats.png" width="1320" height="2868" loading="lazy" alt="Hero tab: stats scroll, HP and MP from nutrition and sleep, steps toward Marathon, and buffs like Well Fed and Fired Up." /></figure>
+      <figure><img src="screenshots/08-worlds.png" width="1320" height="2868" loading="lazy" alt="Adventure map: the Frost Vault, Dragon's Keep and Dreaming Fen worlds with their bosses and levels." /></figure>
+      <figure><img src="screenshots/09-daily-rift.png" width="1320" height="2868" loading="lazy" alt="Daily Rift sheet: Rift of the Mossy Crypt, shaped by your day with Dark Rift, Swift Feet, Feast, Elite Hunt, Fired Up and Gold Rush." /></figure>
+      <figure><img src="screenshots/10-co-op.png" width="1320" height="2868" loading="lazy" alt="Co-op practice in the Dreaming Fen: two heroes fight an imp together with an 11-hit combo." /></figure>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="download">
+    <div class="cta-inner" data-reveal>
+      <img class="app-tile" src="assets/icon-512.png" alt="Respawn Adventures app icon" width="96" height="96" />
+      <div class="chip chip-gold"><span class="dot"></span> COMING SOON TO THE APP STORE</div>
+      <h2 class="cta-title">PRESS START</h2>
+      <p class="cta-sub">Train in Respawn. Fight in Adventures. Get Respawn now so your hero has something to show for it on day one.</p>
+      <div class="hero-actions center">
+        <span class="btn btn-soon btn-lg" aria-disabled="true">Respawn Adventures<small>Coming soon</small></span>
+        <a href="https://apps.apple.com/us/app/nafa-respawn/id6801480441" class="btn btn-blue btn-lg" target="_blank" rel="noopener">Get Respawn on the App Store ↗</a>
+      </div>
+      <p class="cta-fine">For iPhone. Sign in with Apple, Google or email using your Respawn account, or play with a demo hero.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-brand"><img src="assets/icon-512.png" alt="" width="24" height="24" /> RESPAWN ADVENTURES</div>
+    <p class="footer-line">© 2026 Respawn Adventures · A pixel-art action RPG powered by your real training.</p>
+    <p class="footer-line">A product of <a href="../">Not Another Fitness App</a> · <a href="../respawn/">Respawn</a></p>
+  </footer>
+
+  <button type="button" class="sfx-btn" id="sfxBtn" aria-pressed="false">♪ SOUND OFF</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

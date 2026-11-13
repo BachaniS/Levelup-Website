@@ -446,6 +446,18 @@ a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: va
   transition: transform .3s ease, border-color .3s ease;
 }
 .product-shots figure:hover img { transform: translateY(-4px); border-color: rgba(59, 130, 246, .45); }
+/* Product 02, Respawn Adventures: same card, in the game's gold */
+.product-adv { margin-top: 56px; }
+.product-adv .product-head { background: rgba(240, 180, 41, .05); }
+.product-adv a.stage-badge:hover { border-color: var(--amber); }
+.product-adv .feature-list li::before { background: var(--amber); }
+.product-adv .stage-track li.now::before {
+  background: var(--amber); border-color: var(--amber);
+  box-shadow: 0 0 0 5px rgba(240, 180, 41, .2);
+}
+.product-adv .product-shots figure:hover img { border-color: rgba(240, 180, 41, .45); }
+.dot.soon { background: var(--amber); box-shadow: 0 0 0 3px rgba(240, 180, 41, .16); }
+
 .product-shots figcaption {
   font-family: var(--mono); font-size: 11px; color: var(--ink-3);
   margin-top: 9px; letter-spacing: .03em;
@@ -525,6 +537,8 @@ a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: va
   font-size: 14px !important; color: var(--ink-3) !important;
 }
 .privacy-links a { white-space: nowrap; }
+.privacy-links span { display: block; }
+.privacy-links span + span { margin-top: 6px; }
 
 .roadmap {
   margin-top: 34px;
@@ -642,6 +656,7 @@ a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: va
 /* every value after the label sits in column 2, stacked */
 .contact-rows > div > :nth-child(n+2) { grid-column: 2; }
 .contact-rows em { font-style: normal; font-size: 13px; margin-top: 5px; }
+.contact-rows a { overflow-wrap: anywhere; }
 
 /* ── footer ─────────────────────────────────────────────────────────── */
 .footer {
@@ -702,6 +717,7 @@ a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: va
   .product-body { padding: 26px 20px 30px; }
   .contact-inner { padding: 30px 22px; }
   .contact-rows > div { grid-template-columns: 1fr; gap: 4px; }
+  .contact-rows > div > :nth-child(n+2) { grid-column: 1; }
   .footer { padding: 32px 20px 48px; }
   .footer-links { margin-left: 0; width: 100%; }
 }

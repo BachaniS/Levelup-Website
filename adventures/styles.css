@@ -947,6 +947,11 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 20px; background: v
 .footer-line { margin: 0; font-size: 18px; color: var(--text-3); }
 .footer-line a { color: var(--text-2); }
 .footer-line a:hover { color: var(--gold); }
+.footer-links { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 0 22px; font-size: 18px; }
+.footer-links a { color: var(--text-2); padding: 6px 0; }
+.footer-links a:hover { color: var(--gold); }
+.fair-more { margin: 22px 0 0; text-align: center; font-size: 20px; color: var(--text-2); }
+.fair-more a { color: var(--gold); }
 
 .sfx-btn {
   position: fixed; left: 16px; bottom: 16px; z-index: 40;
@@ -1011,6 +1016,7 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 20px; background: v
   .sync-label { flex-basis: 100%; order: 0; }
   .sync-pipe { display: none; }
   .footer { justify-content: center; text-align: center; }
+  .footer-links { justify-content: center; }
   .btn-soon { flex-direction: column; gap: 6px; }
   .btn-soon small::before { content: none; }
   .rune-board { order: -1; }

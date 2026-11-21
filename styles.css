@@ -450,13 +450,13 @@ a.stage-badge:hover { text-decoration: none; color: var(--ink); border-color: va
 .product-adv { margin-top: 56px; }
 .product-adv .product-head { background: rgba(240, 180, 41, .05); }
 .product-adv a.stage-badge:hover { border-color: var(--amber); }
+.product-copy .product-legal { margin: 20px 0 0; font-size: 14.2px; }
 .product-adv .feature-list li::before { background: var(--amber); }
 .product-adv .stage-track li.now::before {
   background: var(--amber); border-color: var(--amber);
   box-shadow: 0 0 0 5px rgba(240, 180, 41, .2);
 }
 .product-adv .product-shots figure:hover img { border-color: rgba(240, 180, 41, .45); }
-.dot.soon { background: var(--amber); box-shadow: 0 0 0 3px rgba(240, 180, 41, .16); }
 
 .product-shots figcaption {
   font-family: var(--mono); font-size: 11px; color: var(--ink-3);

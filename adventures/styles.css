@@ -175,14 +175,6 @@ button { font: inherit; color: inherit; }
 .btn-gold { background: var(--gold); color: #1c1400; border-color: #fff3b0; }
 .btn-blue { background: var(--blue); }
 .btn-red { background: var(--red); }
-.btn-soon {
-  background: transparent; border-color: var(--line-2); color: var(--text-2);
-  cursor: default; box-shadow: none;
-}
-.btn-soon:hover { filter: none; }
-.btn-soon:active { transform: none; box-shadow: none; }
-.btn-soon small { font-size: inherit; color: var(--gold); }
-.btn-soon small::before { content: "· "; color: var(--text-3); }
 .btn[disabled] { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.6); }
 .btn[disabled]:active { transform: none; box-shadow: 4px 4px 0 #000; }
 
@@ -1017,8 +1009,6 @@ input[type="range"]::-moz-range-thumb { width: 16px; height: 20px; background: v
   .sync-pipe { display: none; }
   .footer { justify-content: center; text-align: center; }
   .footer-links { justify-content: center; }
-  .btn-soon { flex-direction: column; gap: 6px; }
-  .btn-soon small::before { content: none; }
   .rune-board { order: -1; }
   /* icon-only sound toggle so it doesn't sit on top of content */
   .sfx-btn { font-size: 0; width: 44px; height: 44px; padding: 0; left: 12px; bottom: 12px; }
